@@ -4,6 +4,8 @@
 /etc/systemd/*
 /etc/security/*
 /etc/pacman.d/*
+/opt/*
+/opt/scripts/*
 
 !/.gitignore
 
@@ -17,6 +19,8 @@
 !/etc/mkinitcpio.conf
 !/etc/resolvconf.conf
 !/etc/pacman.conf
+!/etc/installed_packages
+!/etc/installed_packages_local
 
 !/etc/unbound/
 !/etc/unbound/unbound.conf
@@ -29,3 +33,7 @@
 
 !/etc/pacman.d/
 !/etc/pacman.d/mirrorlist
+
+!/opt/
+!/opt/scripts/
+!/opt/scripts/gen_installed_packages.py
