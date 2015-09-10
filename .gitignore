@@ -12,6 +12,7 @@
 !/etc/
 !/etc/profile
 !/etc/bash.bashrc
+!/etc/sudoers
 !/etc/vimrc
 !/etc/locale.conf
 !/etc/locale.gen
