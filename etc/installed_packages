@@ -22,6 +22,7 @@ caja-sendto
 caja-share
 calibre
 chromium
+clang
 coreutils
 cpupower
 cryptsetup
@@ -65,6 +66,7 @@ gptfdisk
 graphviz
 grep
 grub
+gst-plugins-good
 gzip
 htop
 ibus
