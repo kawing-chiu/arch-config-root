@@ -46,6 +46,7 @@ fcitx-gtk2
 fcitx-gtk3
 fcitx-qt4
 fcitx-sunpinyin
+ffmpegthumbnailer
 file
 filesystem
 findutils
@@ -67,6 +68,7 @@ graphviz
 grep
 grub
 gst-plugins-good
+gvfs-mtp
 gzip
 htop
 ibus

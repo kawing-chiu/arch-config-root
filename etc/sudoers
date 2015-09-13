@@ -97,7 +97,8 @@
 
 root ALL = (ALL) ALL
 
-%wheel ALL = /usr/bin/pacman, /usr/bin/systemctl, /opt/scripts/
+%wheel ALL = /usr/bin/pacman, /usr/bin/systemctl, /opt/scripts/,\
+                /usr/bin/unbound-control
 
 
 
