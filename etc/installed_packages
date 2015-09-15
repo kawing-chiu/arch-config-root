@@ -13,6 +13,7 @@ binutils
 bison
 bluez
 bluez-firmware
+boost
 bzip2
 caja
 caja-gksu
@@ -23,6 +24,7 @@ caja-share
 calibre
 chromium
 clang
+cmake
 coreutils
 cpupower
 cryptsetup
@@ -161,6 +163,7 @@ r
 reiserfsprogs
 rsync
 s-nail
+scons
 screen
 sed
 shadow
@@ -219,6 +222,7 @@ xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
 xfsprogs
+xmind
 xorg-docs
 xorg-fonts-100dpi
 xorg-fonts-75dpi
