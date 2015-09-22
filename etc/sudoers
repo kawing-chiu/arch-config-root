@@ -99,6 +99,10 @@ root ALL = (ALL) ALL
 
 %wheel ALL = /usr/bin/pacman, /usr/bin/systemctl, /opt/scripts/,\
                 /usr/bin/unbound-control
+%wheel ALL = NOPASSWD: /usr/bin/systemctl restart goagent.service,\
+                /opt/scripts/update_goagent_ip.py,\
+                /usr/bin/unbound-control reload,\
+                /usr/bin/systemctl restart netctl-auto@wlp0s20u14.service
 
 
 

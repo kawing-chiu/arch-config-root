@@ -22,5 +22,6 @@ set et
 set sts=-1 sw=4
 
 syntax on
+filetype plugin indent on
 
 
