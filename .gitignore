@@ -39,3 +39,4 @@
 !/opt/scripts/
 !/opt/scripts/gen_installed_packages.py
 !/opt/scripts/update_goagent_ip.py
+!/opt/scripts/load_encrypted_drives.py
