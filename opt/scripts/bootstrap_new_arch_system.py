@@ -5,12 +5,23 @@ This script should be run inside a chroot, after the
 following steps:
 
     pacstrap /mnt base vim-python3 git openssh
+    genfstab -p /mnt >> /mnt/etc/fstab
+
+    (copy ssh keys into /mnt/root/.ssh)
+
     arch-chroot /mnt /bin/bash
+
+    git config --global user.email 'kawing.chiu.sysu@gmail.com'
+    git config --global user.name 'Zhao Jiarong'
+    git config --global push.default simple
+
     cd /
     git init
     git remote add origin git@github.com:kawing-chiu/arch-config-root.git
     git fetch
     git checkout -t -f origin/master
+
+    (the above steps may be moved to a script in the future)
 
 After running this script, there are some steps remaining:
 
@@ -55,6 +66,10 @@ def make_initramfs():
     print("Generating initramfs...")
     subprocess.call(['mkinitcpio', '-p', 'linux'])
 
+def unbound_setup():
+    print("Setting up unbound-control...")
+    subprocess.call(['unbound-control-setup'])
+
 def change_root_password():
     print("Setting root password...")
     subprocess.call(['passwd'])
@@ -66,10 +81,13 @@ def add_special_groups():
 
 def create_admin_user():
     print("Creating admin user {}...".format(ADMIN_USER_NAME))
-    subprocess.call(['useradd', '-m', '-U', '-s', '/bin/bash'])
-    add_to_groups_cmdline = ['gpasswd', '-a', ADMIN_USER_NAME, 'wheel'] + \
-            SPECIAL_SYSTEM_GROUPS
-    subprocess.call(add_to_groups_cmdline)
+    subprocess.call(['useradd', '-m', '-U', '-s', '/bin/bash',
+        ADMIN_USER_NAME])
+
+    groups = ['wheel'] + SPECIAL_SYSTEM_GROUPS
+    for group in groups:
+        subprocess.call(['gpasswd', '-a', ADMIN_USER_NAME, group])
+
     print("Setting password for {}...".format(ADMIN_USER_NAME))
     subprocess.call(['passwd', ADMIN_USER_NAME])
 
@@ -79,6 +97,8 @@ def run():
     set_time_zone()
     gen_locales()
     make_initramfs()
+    unbound_setup()
+
     change_root_password()
     add_special_groups()
     create_admin_user()
