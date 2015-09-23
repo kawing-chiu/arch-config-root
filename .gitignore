@@ -1,5 +1,6 @@
 /*
 /etc/*
+/etc/mkinitcpio.d/*
 /etc/ssh/*
 /etc/unbound/*
 /etc/systemd/*
@@ -23,6 +24,9 @@
 !/etc/pacman.conf
 !/etc/installed_packages
 !/etc/installed_packages_local
+
+!/etc/mkinitcpio.d/
+!/etc/mkinitcpio.d/linux.preset
 
 !/etc/ssh/
 !/etc/ssh/sshd_config
