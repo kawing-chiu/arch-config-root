@@ -1,5 +1,6 @@
 /*
 /etc/*
+/etc/ssh/*
 /etc/unbound/*
 /etc/systemd/*
 /etc/security/*
@@ -22,6 +23,9 @@
 !/etc/pacman.conf
 !/etc/installed_packages
 !/etc/installed_packages_local
+
+!/etc/ssh/
+!/etc/ssh/sshd_config
 
 !/etc/unbound/
 !/etc/unbound/unbound.conf
