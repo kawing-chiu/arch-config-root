@@ -91,6 +91,25 @@ def create_admin_user():
     print("Setting password for {}...".format(ADMIN_USER_NAME))
     subprocess.call(['passwd', ADMIN_USER_NAME])
 
+def get_user_config():
+    user_dir = os.path.join('/home/', ADMIN_USER_NAME)
+
+    subprocess.call(['git', 'init'], cwd=user_dir)
+    subprocess.call(['git', 'remote', 'add', 'origin',
+        'https://github.com/kawing-chiu/arch-config-home.git'],
+        cwd=user_dir)
+    subprocess.call(['git', 'fetch'], cwd=user_dir)
+    subprocess.call(['git', 'checkout', '-t', '-f', 'origin/master'],
+        cwd=user_dir)
+
+    subprocess.call(['git', 'clone', '--recursive',
+        'https://github.com/kawing-chiu/dotvim.git', '.vim'],
+        cwd=user_dir)
+
+    subprocess.call(['git', 'clone',
+        'https://github.com/kawing-chiu/exc.git', 'exercises'],
+        cwd=user_dir)
+
 def run():
     install_packages()
     set_host_name()
@@ -102,6 +121,7 @@ def run():
     change_root_password()
     add_special_groups()
     create_admin_user()
+    get_user_config()
 
     print("Done.")
 
