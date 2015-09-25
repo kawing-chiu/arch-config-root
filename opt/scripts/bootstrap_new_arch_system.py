@@ -34,6 +34,8 @@ import sys
 import os
 import subprocess
 from subprocess import Popen, PIPE
+import pwd
+import shutil
 
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
@@ -92,35 +94,60 @@ def create_admin_user():
     subprocess.call(['passwd', ADMIN_USER_NAME])
 
 def get_user_config():
-    user_dir = os.path.join('/home/', ADMIN_USER_NAME)
+    user_record = pwd.getpwnam(ADMIN_USER_NAME)
+    user_name = user_record.pw_name
+    user_dir = user_record.pw_dir
+    uid = user_record.pw_uid
+    gid = user_record.pw_gid
 
-    subprocess.call(['git', 'init'], cwd=user_dir)
-    subprocess.call(['git', 'remote', 'add', 'origin',
-        'https://github.com/kawing-chiu/arch-config-home.git'],
-        cwd=user_dir)
-    subprocess.call(['git', 'fetch'], cwd=user_dir)
-    subprocess.call(['git', 'checkout', '-t', '-f', 'origin/master'],
-        cwd=user_dir)
+    env = os.environ.copy()
+    env['HOME'] = user_dir
+    env['LOGNAME'] = user_name
+    env['USER'] = user_name
+    env['PWD'] = user_dir
 
-    subprocess.call(['git', 'clone', '--recursive',
-        'https://github.com/kawing-chiu/dotvim.git', '.vim'],
-        cwd=user_dir)
+    def change_user():
+        os.setgroups([])
+        os.setgid(gid)
+        os.setuid(uid)
 
-    subprocess.call(['git', 'clone',
-        'https://github.com/kawing-chiu/exc.git', 'exercises'],
-        cwd=user_dir)
+    def call_as_user(cmd):
+        subprocess.call(cmd, cwd=user_dir, env=env,
+            preexec_fn=change_user)
+
+    ssh_dir = os.path.join(user_dir, '.ssh')
+    if not os.path.exists(ssh_dir):
+        os.mkdir(ssh_dir, 0o700)
+        shutil.chown(ssh_dir, uid, gid)
+    for file_ in ['id_rsa', 'id_rsa.pub']:
+        src = os.path.join('/root/.ssh', file_)
+        dest = os.path.join(ssh_dir, file_)
+        shutil.copy(src, dest)
+        shutil.chown(dest, uid, gid)
+
+    call_as_user(['git', 'init'])
+    call_as_user(['git', 'remote', 'add', 'origin',
+        'https://github.com/kawing-chiu/arch-config-home.git'])
+    call_as_user(['git', 'fetch'])
+    call_as_user(['git', 'checkout', '-t', '-f', 'origin/master'])
+
+    call_as_user(['git', 'clone', '--recursive',
+        'https://github.com/kawing-chiu/dotvim.git', '.vim'])
+
+    call_as_user(['git', 'clone',
+        'https://github.com/kawing-chiu/exc.git', 'exercises'])
 
 def run():
-    install_packages()
-    set_host_name()
-    set_time_zone()
-    gen_locales()
-    make_initramfs()
-    unbound_setup()
+    #install_packages()
+    #set_host_name()
+    #set_time_zone()
+    #gen_locales()
+    #make_initramfs()
+    #unbound_setup()
 
-    change_root_password()
-    add_special_groups()
-    create_admin_user()
+    #change_root_password()
+    #add_special_groups()
+    #create_admin_user()
     get_user_config()
 
     print("Done.")
