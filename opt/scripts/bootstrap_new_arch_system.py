@@ -160,15 +160,15 @@ def get_user_config():
 
     call_as_user(['git', 'init'])
     call_as_user(['git', 'remote', 'add', 'origin',
-        'https://github.com/kawing-chiu/arch-config-home.git'])
+        'git@github.com:kawing-chiu/arch-config-home.git'])
     call_as_user(['git', 'fetch'])
     call_as_user(['git', 'checkout', '-t', '-f', 'origin/master'])
 
     call_as_user(['git', 'clone', '--recursive',
-        'https://github.com/kawing-chiu/dotvim.git', '.vim'])
+        'git@github.com:kawing-chiu/dotvim.git', '.vim'])
 
     call_as_user(['git', 'clone',
-        'https://github.com/kawing-chiu/exc.git', 'exercises'])
+        'git@github.com:kawing-chiu/exc.git', 'exercises'])
 
 def run():
     install_packages()
