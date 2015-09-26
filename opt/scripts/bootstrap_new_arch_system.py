@@ -28,6 +28,8 @@ After running this script, there are some steps remaining:
     create a network profile in /etc/netctl
     configure boot-loader
     edit /etc/fstab and /etc/crypttab
+    copy windows fonts, .mozilla, .config/chromium folders
+    install non-official packages
 
 """
 import sys
@@ -36,6 +38,7 @@ import subprocess
 from subprocess import Popen, PIPE
 import pwd
 import shutil
+from io import StringIO
 
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
@@ -72,6 +75,34 @@ def unbound_setup():
     print("Setting up unbound-control...")
     subprocess.call(['unbound-control-setup'])
 
+def goagent_setup():
+    print("Setting up goagent...")
+    os.symlink('/usr/share/goagent/local/CA.crt',
+        '/etc/ca-certificates/trust-source/anchors/goagent.crt')
+    subprocess.call(['trust', 'extract-compat'])
+
+    config_template = """
+    [gae]
+    appid =
+    password =
+    
+    [iplist]
+    google_cn =
+    
+    google_hk =
+    
+    google_talk =
+    
+    [dns]
+    enable = 0
+    listen = 127.0.0.1:5353
+    """
+    lines = config_template.split('\n')
+    lines = map(lambda x: x[4:], lines)
+    config_template = '\n'.join(lines)
+    with open('/etc/goagent', 'w') as f:
+        f.write(config_template)
+
 def change_root_password():
     print("Setting root password...")
     subprocess.call(['passwd'])
@@ -94,6 +125,8 @@ def create_admin_user():
     subprocess.call(['passwd', ADMIN_USER_NAME])
 
 def get_user_config():
+    print("Loading user configs from github...")
+
     user_record = pwd.getpwnam(ADMIN_USER_NAME)
     user_name = user_record.pw_name
     user_dir = user_record.pw_dir
@@ -138,16 +171,17 @@ def get_user_config():
         'https://github.com/kawing-chiu/exc.git', 'exercises'])
 
 def run():
-    #install_packages()
-    #set_host_name()
-    #set_time_zone()
-    #gen_locales()
-    #make_initramfs()
-    #unbound_setup()
+    install_packages()
+    set_host_name()
+    set_time_zone()
+    gen_locales()
+    make_initramfs()
+    unbound_setup()
+    goagent_setup()
 
-    #change_root_password()
-    #add_special_groups()
-    #create_admin_user()
+    change_root_password()
+    add_special_groups()
+    create_admin_user()
     get_user_config()
 
     print("Done.")
