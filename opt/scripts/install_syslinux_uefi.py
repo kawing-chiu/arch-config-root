@@ -91,7 +91,8 @@ def create_syslinux_cfg(syslinux_path):
 def _parse_args():
     from argparse import ArgumentParser
     parser = ArgumentParser(description="")
-    parser.add_argument('mount_point', help="mount point of EFI partition, e.g. /boot/efi")
+    parser.add_argument('mount_point', default='/boot/efi', nargs='?',
+            help="mount point of EFI partition, e.g. /boot/efi")
     parser.add_argument('-u', '--update-kernel', action='store_true',
             help="update kernel only without installing syslinux")
     args = parser.parse_args()
