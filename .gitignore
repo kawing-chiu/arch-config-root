@@ -53,6 +53,7 @@
 !/opt/scripts/load_encrypted_drives.py
 !/opt/scripts/bootstrap_new_arch_system.py
 !/opt/scripts/install_syslinux_uefi.py
+!/opt/scripts/reset_network.py
 
 !/root/
 !/root/.bashrc
