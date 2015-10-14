@@ -74,6 +74,7 @@ grub
 gst-plugins-good
 gvfs-mtp
 gzip
+hostapd
 htop
 ibus
 ibus-pinyin
@@ -139,6 +140,7 @@ ntp
 openconnect
 openmpi
 openssh
+openvpn
 ovmf
 p7zip
 pacman
@@ -150,15 +152,18 @@ phantomjs
 pkg-config
 pkgfile
 pluma
+polipo
 procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
 pypy
 python
+python-pexpect
 python-pip
 python-virtualenv
 python2-pip
+python2-pygeoip
 python2-virtualenv
 qemu
 r
@@ -170,6 +175,7 @@ screen
 sed
 shadow
 strace
+subversion
 sudo
 synergy
 sysfsutils

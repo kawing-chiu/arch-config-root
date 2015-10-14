@@ -21,6 +21,8 @@ set et
 " soft tabstop, shiftwidth
 set sts=-1 sw=4
 
+set grepprg=ack\ --smart-case
+
 syntax on
 filetype plugin indent on
 
