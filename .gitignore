@@ -55,6 +55,7 @@
 !/opt/scripts/bootstrap_new_arch_system.py
 !/opt/scripts/install_syslinux_uefi.py
 !/opt/scripts/reset_network.py
+!/opt/scripts/start_vps_proxy.py
 
 !/root/
 !/root/.bashrc

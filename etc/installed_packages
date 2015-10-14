@@ -161,6 +161,7 @@ pypy
 python
 python-pexpect
 python-pip
+python-systemd
 python-virtualenv
 python2-pip
 python2-pygeoip

@@ -1,0 +1,13 @@
+[Unit]
+Description=Socks proxy through VPS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/opt/scripts/start_vps_proxy.py
+Restart=on-success
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
