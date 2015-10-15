@@ -8,6 +8,7 @@ Type=notify
 ExecStart=/opt/scripts/start_vps_proxy.py
 Restart=on-success
 RestartSec=2
+KillMode=mixed
 
 [Install]
 WantedBy=multi-user.target

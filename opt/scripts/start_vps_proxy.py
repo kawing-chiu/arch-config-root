@@ -19,7 +19,8 @@ CONFIG_FILE = os.path.expanduser('~/.vps-proxy')
 PROFILE = 'myvps'
 
 
-print_err = partial(print, file=sys.stderr)
+print_err = partial(print, file=sys.stderr, flush=True)
+print = partial(print, flush=True)
 
 def _sanitize(str_):
     out = StringIO()
@@ -41,18 +42,23 @@ def start_tunnel(config):
     cmd = 'ssh -C -o ControlMaster=no -D {local_port} {user}@{host}'
     cmd = cmd.format(local_port=LOCAL_PORT,
         user=config['user'], host=config['host'])
-    print("Spawning tunnel...")
-    ssh_tunnel = pexpect.spawnu(cmd)
-    print("Waiting for password prompt...")
-    index = ssh_tunnel.expect(['password:', '\(yes/no\)'])
-    if index == 0:
-        ssh_tunnel.sendline(config['password'])
-        print("Waiting for shell prompt...")
-        ssh_tunnel.expect(config['prompt'])
-        return ssh_tunnel
-    elif index == 1:
-        sys.exit("Unknown host key. Please connect with {cmd} manually to "
-                "verify the fingerprint.".format(cmd=cmd))
+
+    while True:
+        print("Spawning tunnel...")
+        ssh_tunnel = pexpect.spawnu(cmd)
+        index = ssh_tunnel.expect(['password:', '\(yes/no\)', 'Network is unreachable'])
+        if index == 0:
+            print("Authenticating...")
+            ssh_tunnel.sendline(config['password'])
+            print("Waiting for shell prompt...")
+            ssh_tunnel.expect(config['prompt'])
+            return ssh_tunnel
+        elif index == 1:
+            sys.exit("Unknown host key. Please connect with {cmd} manually to "
+                    "verify the fingerprint.".format(cmd=cmd))
+        elif index == 2:
+            print_err("Network is unreachable. Retry in 10s.")
+            sleep(10)
 
 def test_tunnel(ssh_tunnel, config):
     ssh_tunnel.sendline()
@@ -63,7 +69,6 @@ def test_tunnel(ssh_tunnel, config):
         return False
 
 def shutdown_tunnel(ssh_tunnel):
-    print("Shutting down tunnel...")
     ssh_tunnel.terminate(force=True)
 
 def run():
@@ -74,12 +79,13 @@ def run():
 
     bad_count = 0
     while True:
-        sleep(10)
+        sleep(6)
         good = test_tunnel(ssh_tunnel, config)
         if not good:
             bad_count += 1
             print_err("Tunnel timed out.")
-            if bad_count > 3:
+            if bad_count > 2:
+                print_err("Tunnel unresponsive, shutting down tunnel...")
                 shutdown_tunnel(ssh_tunnel)
                 ssh_tunnel = start_tunnel(config)
         else:
