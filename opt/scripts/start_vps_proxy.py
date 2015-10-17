@@ -13,7 +13,8 @@ import systemd.daemon
 
 
 LOCAL_PORT = 8088
-TIMEOUT = 3
+CONNECT_TIMEOUT = 20
+TEST_TIMEOUT = 3
 
 CONFIG_FILE = os.path.expanduser('~/.vps-proxy')
 PROFILE = 'myvps'
@@ -45,25 +46,33 @@ def start_tunnel(config):
 
     while True:
         print("Spawning tunnel...")
-        ssh_tunnel = pexpect.spawnu(cmd)
-        index = ssh_tunnel.expect(['password:', '\(yes/no\)', 'Network is unreachable'])
-        if index == 0:
-            print("Authenticating...")
-            ssh_tunnel.sendline(config['password'])
-            print("Waiting for shell prompt...")
-            ssh_tunnel.expect(config['prompt'])
-            return ssh_tunnel
-        elif index == 1:
-            sys.exit("Unknown host key. Please connect with {cmd} manually to "
-                    "verify the fingerprint.".format(cmd=cmd))
-        elif index == 2:
-            print_err("Network is unreachable. Retry in 10s.")
+        ssh_tunnel = pexpect.spawnu(cmd, timeout=CONNECT_TIMEOUT)
+        try:
+            index = ssh_tunnel.expect([
+                'password:',
+                '\(yes/no\)',
+                'Network is unreachable'])
+            if index == 0:
+                print("Authenticating...")
+                ssh_tunnel.sendline(config['password'])
+                print("Waiting for shell prompt...")
+                ssh_tunnel.expect(config['prompt'])
+                print("Tunnel ready.")
+                return ssh_tunnel
+            elif index == 1:
+                sys.exit("Unknown host key. Please connect with {cmd} manually to "
+                        "verify the fingerprint.".format(cmd=cmd))
+            elif index == 2:
+                print_err("Network is unreachable. Retry in 10s.")
+                sleep(10)
+        except pexpect.TIMEOUT:
+            print_err("Timed out. Retry in 10s.")
             sleep(10)
 
 def test_tunnel(ssh_tunnel, config):
     ssh_tunnel.sendline()
     try:
-        ssh_tunnel.expect(config['prompt'], timeout=TIMEOUT)
+        ssh_tunnel.expect(config['prompt'], timeout=TEST_TIMEOUT)
         return True
     except pexpect.TIMEOUT:
         return False
@@ -75,7 +84,6 @@ def run():
     config = read_config()
     ssh_tunnel = start_tunnel(config)
     systemd.daemon.notify('READY=1')
-    print("Tunnel ready.")
 
     bad_count = 0
     while True:
@@ -83,7 +91,7 @@ def run():
         good = test_tunnel(ssh_tunnel, config)
         if not good:
             bad_count += 1
-            print_err("Tunnel timed out.")
+            print_err("Tunnel timed out. [count = {}]".format(bad_count))
             if bad_count > 2:
                 print_err("Tunnel unresponsive, shutting down tunnel...")
                 shutdown_tunnel(ssh_tunnel)

@@ -10,5 +10,9 @@ Restart=on-success
 RestartSec=2
 KillMode=mixed
 
+#StandardOutput=tty
+#StandardError=tty
+#TTYPath=/dev/tty12
+
 [Install]
 WantedBy=multi-user.target
