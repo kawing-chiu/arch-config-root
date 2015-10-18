@@ -51,7 +51,8 @@ def start_tunnel(config):
             index = ssh_tunnel.expect([
                 'password:',
                 '\(yes/no\)',
-                'Network is unreachable'])
+                'Network is unreachable',
+                pexpect.EOF])
             if index == 0:
                 print("Authenticating...")
                 ssh_tunnel.sendline(config['password'])
@@ -64,6 +65,11 @@ def start_tunnel(config):
                         "verify the fingerprint.".format(cmd=cmd))
             elif index == 2:
                 print_err("Network is unreachable. Retry in 10s.")
+                sleep(10)
+            elif index == 3:
+                print_err("Unexpected error:")
+                print_err(ssh_tunnel.before.rstrip())
+                print_err("Retry in 10s.")
                 sleep(10)
         except pexpect.TIMEOUT:
             print_err("Timed out. Retry in 10s.")
