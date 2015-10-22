@@ -6,6 +6,7 @@
 /etc/systemd/*
 /etc/security/*
 /etc/pacman.d/*
+/etc/polipo/*
 /opt/*
 /opt/scripts/*
 /root/*
@@ -46,6 +47,9 @@
 
 !/etc/pacman.d/
 !/etc/pacman.d/mirrorlist
+
+!/etc/polipo/
+!/etc/polipo/config
 
 !/opt/
 !/opt/scripts/
