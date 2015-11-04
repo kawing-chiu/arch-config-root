@@ -19,6 +19,8 @@ def run():
     call(['unbound-control', 'reload'])
     #print("Restarting goagent...")
     #call(['systemctl', 'restart', 'goagent'])
+    print("Restarting vps proxy...")
+    call(['systemctl', 'restart', 'vps-proxy.service'])
 
 if __name__ == '__main__':
     run()

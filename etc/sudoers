@@ -99,10 +99,11 @@ root ALL = (ALL) ALL
 
 %wheel ALL = /usr/bin/pacman, /usr/bin/systemctl, /opt/scripts/,\
                 /usr/bin/unbound-control
-%wheel ALL = NOPASSWD: /usr/bin/systemctl restart goagent.service,\
+%wheel ALL = NOPASSWD:\
                 /opt/scripts/update_goagent_ip.py,\
                 /usr/bin/unbound-control reload,\
-                /opt/scripts/reset_network.py
+                /opt/scripts/reset_network.py,\
+                /usr/bin/systemctl restart vps-proxy.service
 
 
 

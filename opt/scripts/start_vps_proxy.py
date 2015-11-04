@@ -7,6 +7,7 @@ from io import StringIO
 from functools import partial
 import sys
 import os
+import gc
 
 import pexpect
 import systemd.daemon
@@ -74,6 +75,8 @@ def start_tunnel(config):
         except pexpect.TIMEOUT:
             print_err("Timed out. Retry in 10s.")
             sleep(10)
+        finally:
+            gc.collect()
 
 def test_tunnel(ssh_tunnel, config):
     ssh_tunnel.sendline()
