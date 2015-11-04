@@ -30,18 +30,10 @@ HISTSIZE=100000
 alias vim='vim -p'
 alias vi='vim'
 
-#goagent_proxy () {
-#    export http_proxy='http://127.0.0.1:8087'
-#    export https_proxy=$http_proxy
-#    export HTTP_PROXY=$http_proxy
-#    export HTTPS_PROXY=$http_proxy
-#}
-#vps_proxy () {
-#    export http_proxy='socks5://127.0.0.1:8088'
-#    export https_proxy=$http_proxy
-#    export HTTP_PROXY=$http_proxy
-#    export HTTPS_PROXY=$http_proxy
-#}
+alias pip-pypy='/opt/pypy/bin/pip'
+alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
+alias ipython-pypy='/opt/pypy/bin/ipython'
+
 polipo_proxy () {
     export http_proxy='http://127.0.0.1:8123'
     export https_proxy=$http_proxy
@@ -54,3 +46,15 @@ no_proxy () {
     unset HTTP_PROXY
     unset HTTPS_PROXY
 }
+#goagent_proxy () {
+#    export http_proxy='http://127.0.0.1:8087'
+#    export https_proxy=$http_proxy
+#    export HTTP_PROXY=$http_proxy
+#    export HTTPS_PROXY=$http_proxy
+#}
+#vps_proxy () {
+#    export http_proxy='socks5://127.0.0.1:8088'
+#    export https_proxy=$http_proxy
+#    export HTTP_PROXY=$http_proxy
+#    export HTTPS_PROXY=$http_proxy
+#}
