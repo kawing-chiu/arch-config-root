@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """Start ssh socks port forwarding to some vps.
+
+Create configuration at ~/.vps-proxy manually before using
+this script. The configuration format is like the following:
+
+    [myvps]
+    host = 
+    user = 
+    password = 
+    prompt = 
+
 """
 import configparser
 from time import sleep

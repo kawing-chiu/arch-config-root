@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 """Generate a list of installed arch packages.
+
+Use the following command to install from the generated
+package list:
+
+    cat /etc/installed_packages | pacman -S --needed -
+
 """
 import subprocess
 
