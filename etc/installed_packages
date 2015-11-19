@@ -191,6 +191,7 @@ unbound
 unrar
 usbutils
 util-linux
+valgrind
 vi
 vim-python3
 virt-manager
