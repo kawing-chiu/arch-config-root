@@ -4,7 +4,10 @@
 Create configuration at ~/.vps-proxy manually before using
 this script. The configuration format is like the following:
 
-    [myvps]
+    [current]
+    vps = vps1
+
+    [vps1]
     host = 
     user = 
     password = 
@@ -28,7 +31,6 @@ CONNECT_TIMEOUT = 20
 TEST_TIMEOUT = 3
 
 CONFIG_FILE = os.path.expanduser('~/.vps-proxy')
-PROFILE = 'myvps'
 
 
 print_err = partial(print, file=sys.stderr, flush=True)
@@ -37,7 +39,7 @@ print = partial(print, flush=True)
 def _sanitize(str_):
     out = StringIO()
     for c in str_:
-        if c in '.$':
+        if c in '[].$':
             out.write('\\' + c)
         else:
             out.write(c)
@@ -46,9 +48,10 @@ def _sanitize(str_):
 def read_config():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
-    config = config[PROFILE]
-    config['prompt'] = _sanitize(config['prompt'])
-    return config
+    current_vps = config['current']['vps']
+    vps_config = config[current_vps]
+    vps_config['prompt'] = _sanitize(vps_config['prompt'])
+    return vps_config
 
 def start_tunnel(config):
     cmd = 'ssh -C -o ControlMaster=no -D {local_port} {user}@{host}'
@@ -84,6 +87,7 @@ def start_tunnel(config):
                 sleep(10)
         except pexpect.TIMEOUT:
             print_err("Timed out. Retry in 10s.")
+            #print_err(ssh_tunnel.before.strip())
             sleep(10)
         finally:
             gc.collect()
