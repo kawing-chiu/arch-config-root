@@ -59,6 +59,7 @@ flex
 galculator-gtk2
 gawk
 gcc
+gcc-fortran
 gcc-libs
 gdb
 gettext
@@ -72,6 +73,7 @@ gptfdisk
 graphviz
 grep
 grub
+gsl
 gst-plugins-good
 gvfs-mtp
 gzip
@@ -155,6 +157,7 @@ pkgfile
 pluma
 polipo
 procps-ng
+protobuf
 psmisc
 pulseaudio
 pulseaudio-alsa
