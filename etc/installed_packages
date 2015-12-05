@@ -62,6 +62,7 @@ gcc
 gcc-fortran
 gcc-libs
 gdb
+gemrb
 gettext
 gimp
 git
@@ -165,6 +166,7 @@ pypy
 python
 python-pexpect
 python-pip
+python-pyqt4
 python-systemd
 python-virtualenv
 python2-pip
