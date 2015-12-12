@@ -53,6 +53,7 @@
 
 !/opt/
 !/opt/scripts/
+!/opt/scripts/_utils.py
 !/opt/scripts/gen_installed_packages.py
 !/opt/scripts/update_goagent_ip.py
 !/opt/scripts/load_encrypted_drives.py
@@ -60,6 +61,7 @@
 !/opt/scripts/install_syslinux_uefi.py
 !/opt/scripts/reset_network.py
 !/opt/scripts/start_vps_proxy.py
+!/opt/scripts/init_postgres_db.py
 
 !/root/
 !/root/.bashrc
