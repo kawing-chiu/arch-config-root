@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Initialize a new postgres database."""
 import os
 import sys
 
