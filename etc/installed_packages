@@ -49,6 +49,7 @@ fcitx-configtool
 fcitx-gtk2
 fcitx-gtk3
 fcitx-qt4
+fcitx-qt5
 fcitx-sunpinyin
 ffmpegthumbnailer
 file
@@ -157,6 +158,7 @@ pkg-config
 pkgfile
 pluma
 polipo
+postgresql
 procps-ng
 protobuf
 psmisc
@@ -174,9 +176,12 @@ python2-pygeoip
 python2-virtualenv
 qemu
 r
+redis
 reiserfsprogs
+rethinkdb
 rsync
 s-nail
+scala
 scons
 screen
 sed
@@ -192,6 +197,8 @@ tar
 terminator
 terminus-font
 texinfo
+tk
+twine
 unbound
 unrar
 usbutils
