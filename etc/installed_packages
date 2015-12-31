@@ -15,6 +15,7 @@ bison
 bluez
 bluez-firmware
 boost
+breeze-gtk
 bzip2
 caja
 caja-gksu
@@ -93,6 +94,7 @@ ipython2
 iw
 jdk8-openjdk
 jfsutils
+kdenlive
 less
 libreoffice-fresh
 libtool
@@ -286,3 +288,4 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xterm
+zeromq
