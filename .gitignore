@@ -1,19 +1,20 @@
-/*
-/etc/*
-/etc/mkinitcpio.d/*
-/etc/ssh/*
-/etc/unbound/*
-/etc/systemd/*
-/etc/security/*
-/etc/pacman.d/*
-/etc/polipo/*
-/opt/*
-/opt/scripts/*
-/root/*
+/**/*
+#/*
+#/etc/*
+#/etc/mkinitcpio.d/*
+#/etc/ssh/*
+#/etc/unbound/*
+#/etc/systemd/*
+#/etc/security/*
+#/etc/pacman.d/*
+#/etc/polipo/*
+#/opt/*
+#/opt/scripts/*
+#/root/*
 
 !/.gitignore
 
-!/etc/
+#!/etc/
 !/etc/profile
 !/etc/bash.bashrc
 !/etc/sudoers
@@ -28,31 +29,32 @@
 !/etc/installed_packages_local
 !/etc/libao.conf
 
-!/etc/mkinitcpio.d/
+#!/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
 
-!/etc/ssh/
+#!/etc/ssh/
 !/etc/ssh/sshd_config
 !/etc/ssh/ssh_config
 
-!/etc/unbound/
+#!/etc/unbound/
 !/etc/unbound/unbound.conf
 
-!/etc/systemd/
-!/etc/systemd/system/
+#!/etc/systemd/
+#!/etc/systemd/system/
+!/etc/systemd/system/**/*
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 
-!/etc/security/
+#!/etc/security/
 !/etc/security/limits.conf
 
-!/etc/pacman.d/
+#!/etc/pacman.d/
 !/etc/pacman.d/mirrorlist
 
-!/etc/polipo/
+#!/etc/polipo/
 !/etc/polipo/config
 
-!/opt/
-!/opt/scripts/
+#!/opt/
+#!/opt/scripts/
 !/opt/scripts/_utils.py
 !/opt/scripts/gen_installed_packages.py
 !/opt/scripts/update_goagent_ip.py
@@ -63,6 +65,6 @@
 !/opt/scripts/start_vps_proxy.py
 !/opt/scripts/init_postgres_db.py
 
-!/root/
+#!/root/
 !/root/.bashrc
 !/root/.bash_profile
