@@ -28,7 +28,8 @@ esac
 HISTSIZE=100000
 
 alias vim='vim -p'
-alias vi='vim'
+alias vi='vim -p'
+alias less='less -R'
 
 alias pip-pypy='/opt/pypy/bin/pip'
 alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
