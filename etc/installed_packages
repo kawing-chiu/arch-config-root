@@ -170,7 +170,9 @@ pypy
 python
 python-pexpect
 python-pip
+python-psycopg2
 python-pyqt4
+python-sqlalchemy
 python-systemd
 python-virtualenv
 python2-pip
