@@ -188,6 +188,7 @@ scons
 screen
 sed
 shadow
+sshfs
 strace
 subversion
 sudo
@@ -207,7 +208,7 @@ usbutils
 util-linux
 valgrind
 vi
-vim-python3
+vim
 virt-manager
 vlc
 wget
