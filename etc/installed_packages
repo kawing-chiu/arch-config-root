@@ -58,6 +58,7 @@ filesystem
 findutils
 firefox
 flex
+freetds
 galculator-gtk2
 gawk
 gcc
@@ -101,6 +102,7 @@ libtool
 licenses
 linux
 linux-headers
+llvm
 logrotate
 lsof
 lvm2
