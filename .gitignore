@@ -28,6 +28,7 @@
 !/etc/installed_packages
 !/etc/installed_packages_local
 !/etc/libao.conf
+!/etc/odbcinst.ini
 
 #!/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
