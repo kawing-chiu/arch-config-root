@@ -4,6 +4,7 @@
 import sys
 import os
 import subprocess
+from subprocess import Popen
 import shutil
 
 from _utils import *
@@ -40,6 +41,13 @@ def copy_files(target_dir):
             print('\tto: {}'.format(new_dir))
             shutil.copytree(file_, new_dir)
 
+def gen_fstab(target_dir):
+    print("Generating fstab...")
+    out_fstab = target_dir + '/etc/fstab'
+    with open(out_fstab, 'ab') as f:
+        p = Popen(['genfstab', '-p', '/mnt'], stdout=f)
+        p.communicate()
+
 def chroot(target_dir):
     print("Chrooting...")
     os.execvp('arch-chroot', ['arch-chroot', target_dir, '/bin/bash'])
@@ -70,6 +78,7 @@ def main():
     target_dir = os.path.abspath(args.target_dir)
 
     pacstrap(target_dir)
+    gen_fstab(target_dir)
     copy_files(target_dir)
     get_config(target_dir)
     chroot(target_dir)

@@ -7,7 +7,7 @@ following steps:
     pacstrap /mnt base vim git openssh
     genfstab -p /mnt >> /mnt/etc/fstab
 
-    (copy ssh keys into /mnt/root/.ssh)
+    copy ssh keys, windows fonts, dicts to the new root
 
     arch-chroot /mnt /bin/bash
 
@@ -28,7 +28,7 @@ After running this script, there are some steps remaining:
     create a network profile in /etc/netctl
     configure boot-loader
     edit /etc/fstab and /etc/crypttab
-    copy windows fonts, .mozilla, .config/chromium folders
+    copy .mozilla, .config/chromium folders
     install non-official packages
 
 """
@@ -37,6 +37,7 @@ import os
 import subprocess
 from subprocess import Popen, PIPE
 import pwd
+import grp
 import shutil
 from io import StringIO
 
@@ -45,7 +46,7 @@ from _utils import *
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
 ADMIN_USER_NAME = 'statistician'
-SPECIAL_SYSTEM_GROUPS = ['raise_nofile_limit']
+ADMIN_SYSTEM_GROUPS = ['wheel', 'raise_nofile_limit']
 
 
 def install_packages():
@@ -67,15 +68,15 @@ def set_time_zone():
 
 def gen_locales():
     print("Generating locales...")
-    subprocess.call(['locale-gen'])
+    run(['locale-gen'])
 
 def make_initramfs():
     print("Generating initramfs...")
-    subprocess.call(['mkinitcpio', '-p', 'linux'])
+    run(['mkinitcpio', '-p', 'linux'])
 
 def unbound_setup():
     print("Setting up unbound-control...")
-    subprocess.call(['unbound-control-setup'])
+    run(['unbound-control-setup'])
 
 #def goagent_setup():
 #    print("Setting up goagent...")
@@ -107,48 +108,34 @@ def unbound_setup():
 
 def change_root_password():
     print("Setting root password...")
-    subprocess.call(['passwd'])
+    run(['passwd'])
 
 def add_special_groups():
     print("Adding special groups...")
-    for group in SPECIAL_SYSTEM_GROUPS:
-        subprocess.call(['groupadd', '--system', group])
+    for group in ADMIN_SYSTEM_GROUPS:
+        try:
+            grp.getgrnam(group)
+        except KeyError:
+            print("\tadding group {}".format(group))
+            run(['groupadd', '--system', group])
 
 def create_admin_user():
     print("Creating admin user {}...".format(ADMIN_USER_NAME))
-    subprocess.call(['useradd', '-m', '-U', '-s', '/bin/bash',
+    run(['useradd', '-m', '-U', '-s', '/bin/bash',
         ADMIN_USER_NAME])
 
-    groups = ['wheel'] + SPECIAL_SYSTEM_GROUPS
-    for group in groups:
-        subprocess.call(['gpasswd', '-a', ADMIN_USER_NAME, group])
+    for group in ADMIN_SYSTEM_GROUPS:
+        run(['gpasswd', '-a', ADMIN_USER_NAME, group])
 
     print("Setting password for {}...".format(ADMIN_USER_NAME))
-    subprocess.call(['passwd', ADMIN_USER_NAME])
+    run(['passwd', ADMIN_USER_NAME])
 
-def get_user_config():
-    print("Loading user configs from github...")
-
-    #user_record = pwd.getpwnam(ADMIN_USER_NAME)
-    #user_name = user_record.pw_name
-    #user_dir = user_record.pw_dir
-    #uid = user_record.pw_uid
-    #gid = user_record.pw_gid
-
-    #env = os.environ.copy()
-    #env['HOME'] = user_dir
-    #env['LOGNAME'] = user_name
-    #env['USER'] = user_name
-    #env['PWD'] = user_dir
-
-    #def change_user():
-    #    os.setgroups([])
-    #    os.setgid(gid)
-    #    os.setuid(uid)
-
-    #def call_as_user(cmd):
-    #    subprocess.call(cmd, cwd=user_dir, env=env,
-    #        preexec_fn=change_user)
+def copy_ssh_keys():
+    user_record = pwd.getpwnam(ADMIN_USER_NAME)
+    user_name = user_record.pw_name
+    user_dir = user_record.pw_dir
+    uid = user_record.pw_uid
+    gid = user_record.pw_gid
 
     ssh_dir = os.path.join(user_dir, '.ssh')
     if not os.path.exists(ssh_dir):
@@ -160,16 +147,22 @@ def get_user_config():
         shutil.copy(src, dest)
         shutil.chown(dest, uid, gid)
 
-    run_as_user(['git', 'init'])
-    run_as_user(['git', 'remote', 'add', 'origin',
-        'git@github.com:kawing-chiu/arch-config-home.git'])
-    run_as_user(['git', 'fetch'])
-    run_as_user(['git', 'checkout', '-t', '-f', 'origin/master'])
 
-    run_as_user(['git', 'clone', '--recursive',
+def get_user_config():
+    print("Loading user configs from github...")
+
+    copy_ssh_keys()
+
+    run_as_user(ADMIN_USER_NAME, ['git', 'init'])
+    run_as_user(ADMIN_USER_NAME, ['git', 'remote', 'add', 'origin',
+        'git@github.com:kawing-chiu/arch-config-home.git'])
+    run_as_user(ADMIN_USER_NAME, ['git', 'fetch'])
+    run_as_user(ADMIN_USER_NAME, ['git', 'checkout', '-t', '-f', 'origin/master'])
+
+    run_as_user(ADMIN_USER_NAME, ['git', 'clone', '--recursive',
         'git@github.com:kawing-chiu/dotvim.git', '.vim'])
 
-    run_as_user(['git', 'clone',
+    run_as_user(ADMIN_USER_NAME, ['git', 'clone',
         'git@github.com:kawing-chiu/exc.git', 'exercises'])
 
 def main():
