@@ -4,7 +4,7 @@
 This script should be run inside a chroot, after the
 following steps:
 
-    pacstrap /mnt base vim-python3 git openssh
+    pacstrap /mnt base vim git openssh
     genfstab -p /mnt >> /mnt/etc/fstab
 
     (copy ssh keys into /mnt/root/.ssh)
@@ -39,6 +39,8 @@ from subprocess import Popen, PIPE
 import pwd
 import shutil
 from io import StringIO
+
+from _utils import *
 
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
@@ -75,33 +77,33 @@ def unbound_setup():
     print("Setting up unbound-control...")
     subprocess.call(['unbound-control-setup'])
 
-def goagent_setup():
-    print("Setting up goagent...")
-    os.symlink('/usr/share/goagent/local/CA.crt',
-        '/etc/ca-certificates/trust-source/anchors/goagent.crt')
-    subprocess.call(['trust', 'extract-compat'])
-
-    config_template = """
-    [gae]
-    appid =
-    password =
-    
-    [iplist]
-    google_cn =
-    
-    google_hk =
-    
-    google_talk =
-    
-    [dns]
-    enable = 0
-    listen = 127.0.0.1:5353
-    """
-    lines = config_template.split('\n')
-    lines = map(lambda x: x[4:], lines)
-    config_template = '\n'.join(lines)
-    with open('/etc/goagent', 'w') as f:
-        f.write(config_template)
+#def goagent_setup():
+#    print("Setting up goagent...")
+#    os.symlink('/usr/share/goagent/local/CA.crt',
+#        '/etc/ca-certificates/trust-source/anchors/goagent.crt')
+#    subprocess.call(['trust', 'extract-compat'])
+#
+#    config_template = """
+#    [gae]
+#    appid =
+#    password =
+#    
+#    [iplist]
+#    google_cn =
+#    
+#    google_hk =
+#    
+#    google_talk =
+#    
+#    [dns]
+#    enable = 0
+#    listen = 127.0.0.1:5353
+#    """
+#    lines = config_template.split('\n')
+#    lines = map(lambda x: x[4:], lines)
+#    config_template = '\n'.join(lines)
+#    with open('/etc/goagent', 'w') as f:
+#        f.write(config_template)
 
 def change_root_password():
     print("Setting root password...")
@@ -127,26 +129,26 @@ def create_admin_user():
 def get_user_config():
     print("Loading user configs from github...")
 
-    user_record = pwd.getpwnam(ADMIN_USER_NAME)
-    user_name = user_record.pw_name
-    user_dir = user_record.pw_dir
-    uid = user_record.pw_uid
-    gid = user_record.pw_gid
+    #user_record = pwd.getpwnam(ADMIN_USER_NAME)
+    #user_name = user_record.pw_name
+    #user_dir = user_record.pw_dir
+    #uid = user_record.pw_uid
+    #gid = user_record.pw_gid
 
-    env = os.environ.copy()
-    env['HOME'] = user_dir
-    env['LOGNAME'] = user_name
-    env['USER'] = user_name
-    env['PWD'] = user_dir
+    #env = os.environ.copy()
+    #env['HOME'] = user_dir
+    #env['LOGNAME'] = user_name
+    #env['USER'] = user_name
+    #env['PWD'] = user_dir
 
-    def change_user():
-        os.setgroups([])
-        os.setgid(gid)
-        os.setuid(uid)
+    #def change_user():
+    #    os.setgroups([])
+    #    os.setgid(gid)
+    #    os.setuid(uid)
 
-    def call_as_user(cmd):
-        subprocess.call(cmd, cwd=user_dir, env=env,
-            preexec_fn=change_user)
+    #def call_as_user(cmd):
+    #    subprocess.call(cmd, cwd=user_dir, env=env,
+    #        preexec_fn=change_user)
 
     ssh_dir = os.path.join(user_dir, '.ssh')
     if not os.path.exists(ssh_dir):
@@ -158,26 +160,26 @@ def get_user_config():
         shutil.copy(src, dest)
         shutil.chown(dest, uid, gid)
 
-    call_as_user(['git', 'init'])
-    call_as_user(['git', 'remote', 'add', 'origin',
+    run_as_user(['git', 'init'])
+    run_as_user(['git', 'remote', 'add', 'origin',
         'git@github.com:kawing-chiu/arch-config-home.git'])
-    call_as_user(['git', 'fetch'])
-    call_as_user(['git', 'checkout', '-t', '-f', 'origin/master'])
+    run_as_user(['git', 'fetch'])
+    run_as_user(['git', 'checkout', '-t', '-f', 'origin/master'])
 
-    call_as_user(['git', 'clone', '--recursive',
+    run_as_user(['git', 'clone', '--recursive',
         'git@github.com:kawing-chiu/dotvim.git', '.vim'])
 
-    call_as_user(['git', 'clone',
+    run_as_user(['git', 'clone',
         'git@github.com:kawing-chiu/exc.git', 'exercises'])
 
-def run():
+def main():
     install_packages()
     set_host_name()
     set_time_zone()
     gen_locales()
     make_initramfs()
     unbound_setup()
-    goagent_setup()
+    #goagent_setup()
 
     change_root_password()
     add_special_groups()
@@ -187,5 +189,5 @@ def run():
     print("Done.")
 
 if __name__ == "__main__":
-    run()
+    main()
 

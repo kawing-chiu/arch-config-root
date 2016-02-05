@@ -2,8 +2,8 @@ import pwd
 import subprocess
 import os
 
-def call_as_user(user, cmd, cwd=None):
-    """Run command as other user.
+def run_as_user(user, cmd, cwd=None, **kwargs):
+    """Run command as another user.
 
     By default, cwd is set to the home dir of the 
     run-as user.
@@ -17,16 +17,18 @@ def call_as_user(user, cmd, cwd=None):
     uid = user_record.pw_uid
     gid = user_record.pw_gid
 
-    env = os.environ.copy()
+    env = kwargs.pop('env', None)
+    if env is None:
+        env = os.environ.copy()
     env['HOME'] = user_home
     env['LOGNAME'] = user_name
     env['USER'] = user_name
-
     if cwd is None:
-        env['PWD'] = user_home
         cwd = user_home
+        env['PWD'] = user_home
     else:
-        env['PWD'] = os.path.abspath(cwd)
+        cwd = os.path.abspath(cwd)
+        env['PWD'] = cwd
 
     def change_user():
         os.setgroups([])
@@ -34,8 +36,8 @@ def call_as_user(user, cmd, cwd=None):
         os.setuid(uid)
 
     subprocess.call(cmd, cwd=cwd, env=env,
-        preexec_fn=change_user)
+        preexec_fn=change_user, **kwargs)
 
-def call(*args, **kwargs):
+def run(*args, **kwargs):
     subprocess.call(*args, **kwargs)
 

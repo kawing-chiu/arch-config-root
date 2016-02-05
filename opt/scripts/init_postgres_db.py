@@ -6,7 +6,7 @@ import sys
 from _utils import *
 
 
-def run():
+def main():
     path = input("Path of the new database: ")
     cmd = ['initdb', '--locale', 'en_US.UTF-8', '-E', 'UTF8', '-D', path]
 
@@ -15,9 +15,9 @@ def run():
         user = input("Create database as user: ")
         if user == 'root':
             sys.exit("Error: please don't create database as root.")
-        call_as_user(user, cmd)
+        run_as_user(user, cmd)
     else:
-        call(cmd)
+        run(cmd)
 
 if __name__ == "__main__":
-    run()
+    main()

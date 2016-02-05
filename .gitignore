@@ -65,7 +65,9 @@
 !/opt/scripts/reset_network.py
 !/opt/scripts/start_vps_proxy.py
 !/opt/scripts/init_postgres_db.py
+!/opt/scripts/prepare_arch_chroot.py
 
 #!/root/
 !/root/.bashrc
 !/root/.bash_profile
+!/root/.ssh/config
