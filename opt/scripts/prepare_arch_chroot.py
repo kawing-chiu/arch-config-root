@@ -22,7 +22,7 @@ COPY_FILE_LIST = [
 
 def pacstrap(target_dir):
     print("Running pacstrap...")
-    run(['pacstrap', target_dir, 'base', 'vim', 'git', 'openssh', 'bash-completion'])
+    run(['pacstrap', target_dir, 'base', 'vim', 'git', 'openssh', 'python', 'bash-completion'])
 
 def copy_files(target_dir):
     print("Copying files...")

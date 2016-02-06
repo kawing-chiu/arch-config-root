@@ -53,7 +53,7 @@ def install_packages():
     print("Installing packages...")
     with open(PACKAGES_LIST_FILE, 'rb') as f:
         packages = f.read()
-    p = Popen(['pacman', '-S', '--needed', '-'], stdin=PIPE)
+    p = Popen(['pacman', '-Syu', '--needed', '-'], stdin=PIPE)
     p.communicate(input=packages)
 
 def set_host_name():
