@@ -165,19 +165,35 @@ def get_user_config():
     run_as_user(ADMIN_USER_NAME, ['git', 'clone',
         'git@github.com:kawing-chiu/exc.git', 'exercises'])
 
+def create_efi_mount_point():
+    efi_dir = '/boot/efi'
+    print("Creating EFI mount point: {}".format(efi_dir))
+    os.makedirs(efi_dir, exist_ok=True)
+
+def note():
+    print("Note that this script does not install a bootloader. "
+            "To install syslinux, run install_syslinux.py manually "
+            "*inside* this chroot")
+
 def main():
     install_packages()
     set_host_name()
     set_time_zone()
     gen_locales()
     make_initramfs()
-    unbound_setup()
+
+    # currently, unbound-control-setup has a serious bug
+    #unbound_setup()
+
     #goagent_setup()
 
     change_root_password()
     add_special_groups()
     create_admin_user()
     get_user_config()
+
+    create_efi_mount_point()
+    note()
 
     print("Done.")
 

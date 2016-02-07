@@ -18,7 +18,7 @@ BIOS_PATH = 'syslinux_bios/'
 ARCH_PATH = 'arch/'
 
 
-def _get_device(path):
+def _get_partition_by_path(path):
     df_out = subprocess.check_output(['df', '--output=source', path])
     df_out = df_out.decode().split('\n')
     assert df_out[0] == 'Filesystem', "There is something wrong with df's output."
@@ -27,8 +27,8 @@ def _get_device(path):
     return full_dev_path
 
 
-def copy_uefi_syslinux_files(target_path, mode):
-    print("Copying syslinux files to {}...".format(target_path))
+def copy_syslinux_uefi_files(target_path, uefi_mode):
+    print("Copying syslinux uefi files to {}...".format(target_path))
     if not os.path.exists(target_path):
         os.makedirs(target_path)
     if os.listdir(target_path):
@@ -39,11 +39,24 @@ def copy_uefi_syslinux_files(target_path, mode):
     for file_ in os.listdir(syslinux_files_dir):
         shutil.copy(os.path.join(syslinux_files_dir, file_), target_path)
 
-    if mode == 'usb':
+    if uefi_mode == 'usb':
         old_efi_bin = os.path.join(target_path, 'syslinux.efi')
         new_efi_bin = os.path.join(target_path, 'bootx64.efi')
         print("\trename {} to {}".format(old_efi_bin, new_efi_bin))
         shutil.move(old_efi_bin, new_efi_bin)
+
+def copy_syslinux_bios_files(target_path):
+    print("Copying syslinux bios files to {}...".format(target_path))
+    if not os.path.exists(target_path):
+        os.makedirs(target_path)
+    if os.listdir(target_path):
+        print("Directory '{}' is not empty. Exiting.".format(target_path))
+        sys.exit()
+
+    syslinux_files_dir = '/usr/lib/syslinux/bios/'
+    for file_ in os.listdir(syslinux_files_dir):
+        if file_.endswith('.c32'):
+            shutil.copy(os.path.join(syslinux_files_dir, file_), target_path)
 
 def copy_arch_boot_files(target_path):
     if not os.path.exists(target_path):
@@ -53,22 +66,22 @@ def copy_arch_boot_files(target_path):
     for file_ in ['initramfs-linux.img', 'vmlinuz-linux']:
         shutil.copy(os.path.join('/boot/', file_), target_path)
 
-def set_efi_boot_entry(path):
-    print("Creating EFI boot entry...")
-    print("Current boot entries:")
-    subprocess.call(['efibootmgr'])
-
-    full_dev_path = _get_device(path)
-    match = re.search(r'(/dev/[a-z]+)([1-9])', full_dev_path)
-    device, partition = match.groups()
-
-    print("Adding new EFI boot entry...")
-    subprocess.call(['efibootmgr', '-c', '-d', device, '-p', partition,
-        '-l', os.path.join('/', PC_MODE_PATH, 'syslinux/syslinux.efi'),
-        '-L', 'Syslinux'])
-
-    print("New boot entries:")
-    subprocess.call(['efibootmgr'])
+#def set_efi_boot_entry(path):
+#    print("Creating EFI boot entry...")
+#    print("Current boot entries:")
+#    subprocess.call(['efibootmgr'])
+#
+#    full_dev_path = _get_partition_by_path(path)
+#    match = re.search(r'(/dev/[a-z]+)([1-9])', full_dev_path)
+#    device, partition = match.groups()
+#
+#    print("Adding new EFI boot entry...")
+#    subprocess.call(['efibootmgr', '-c', '-d', device, '-p', partition,
+#        '-l', os.path.join('/', PC_MODE_PATH, 'syslinux/syslinux.efi'),
+#        '-L', 'Syslinux'])
+#
+#    print("New boot entries:")
+#    subprocess.call(['efibootmgr'])
 
 def create_syslinux_cfg(syslinux_path, arch_path):
     print("Generating syslinux config...")
@@ -81,7 +94,7 @@ def create_syslinux_cfg(syslinux_path, arch_path):
 
     LABEL arch
         KERNEL {rel_path}/vmlinuz-linux
-        APPEND ro cryptdevice=UUID={crypt_uuid}:{crypt_name} root={root_path} intel_iommu=on
+        APPEND ro cryptdevice=UUID={crypt_uuid}:{crypt_name} root={root_part} intel_iommu=on
         INITRD {rel_path}/initramfs-linux.img
     """
 
@@ -91,10 +104,10 @@ def create_syslinux_cfg(syslinux_path, arch_path):
     crypt_uuid = crypt_uuid.rstrip().decode()
     crypt_name = input("The name of the crypt device, i.e. luks_on_sdxc: ")
     rel_path = os.path.relpath(arch_path, start=syslinux_path)
-    root_path = _get_device('/')
+    root_part = _get_partition_by_path('/')
 
     config = cfg_template.format(crypt_uuid=crypt_uuid,
-            crypt_name=crypt_name, root_path=root_path, rel_path=rel_path)
+            crypt_name=crypt_name, root_part=root_part, rel_path=rel_path)
     lines = config.splitlines()
     lines = map(lambda x: x[4:], lines)
     config = '\n'.join(lines)
@@ -104,12 +117,35 @@ def create_syslinux_cfg(syslinux_path, arch_path):
         print("\tcreate syslinux UEFI config file {}".format(cfg_file))
         f.write(config)
 
+def install_syslinux_uefi(mode, arch_path, syslinux_uefi_path):
+    copy_syslinux_uefi_files(syslinux_uefi_path, mode)
+    copy_arch_boot_files(arch_path)
+    create_syslinux_cfg(syslinux_uefi_path, arch_path)
+
+def install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num):
+    copy_syslinux_bios_files(syslinux_bios_path)
+    print("Installing syslinux to {}, path: {}".format(device, BIOS_PATH))
+    run(['syslinux', '-i', '-d', BIOS_PATH, device])
+
+    print("Writing MBR...")
+    mbr_bin_file = '/usr/lib/syslinux/bios/gptmbr_c.bin'
+    run(['dd', 'bs=440', 'count=1', 'conv=notrunc',
+        'if=' + mbr_bin_file, 'of=' + device])
+
+    print("Setting bootflag...")
+    # use 'sgdisk -A list' to show all setable attributes
+    # show set attributes on partition: 'sgdisk -A <part_num>:show <device>'
+    run(['sgdisk', device, '--attributes=' + part_num + ':set:2'])
+    print("\tcheck with 'sgdisk -A {}:show {}'".format(part_num, device))
+
+    create_syslinux_cfg(syslinux_bios_path, arch_path)
+
 def _parse_args():
     from argparse import ArgumentParser
     parser = ArgumentParser(description="")
     parser.add_argument('mount_point', default='/boot/efi', nargs='?',
             help="mount point of EFI partition, e.g. /boot/efi")
-    parser.add_argument('-m', '--mode', choices=['pc', 'usb'], default='usb',
+    parser.add_argument('-m', '--uefi-mode', choices=['pc', 'usb'], default='usb',
             help="update kernel only without installing syslinux")
     parser.add_argument('-u', '--update-kernel-only', action='store_true',
             help="update kernel only without installing syslinux")
@@ -120,22 +156,31 @@ def _parse_args():
 
     return args
 
-def run():
+def main():
     args = _parse_args()
-    mode = args.mode
+    uefi_mode = args.uefi_mode
     mount_point = args.mount_point
 
-    dev = _get_device(mount_point)
-    print("Installing syslinux to '{}'...".format(dev))
+    partition = _get_partition_by_path(mount_point)
+    device = partition[:-1]
+    part_num = partition[-1]
+    print("Installing syslinux to '{}', device: {}, partition num: {}".format(
+        mount_point, device, part_num))
+
+    confirm = input("Please check the above information and confirm (type uppercase yes): ")
+    if confirm != 'YES':
+        sys.exit()
 
     if mode == 'usb':
-        # install to usb removable media
+        # install to usb removable media, files must be placed into EFI/BOOT/
         syslinux_uefi_path = os.path.join(mount_point, USB_MODE_PATH)
-        copy_uefi_syslinux_files(syslinux_uefi_path, mode)
+    else:
+        syslinux_uefi_path = os.path.join(mount_point, PC_MODE_PATH)
+    syslinux_bios_path = os.path.join(mount_point, BIOS_PATH)
+    arch_path = os.path.join(mount_point, ARCH_PATH)
 
-        arch_path = os.path.join(mount_point, ARCH_PATH)
-        copy_arch_boot_files(arch_path)
-        create_syslinux_cfg(syslinux_uefi_path, arch_path)
+    install_syslinux_uefi(uefi_mode, arch_path, syslinux_uefi_path)
+    install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num)
 
     #base_path = os.path.join(args.mount_point, PC_MODE_PATH)
     #syslinux_path = os.path.join(base_path, 'syslinux')
@@ -153,5 +198,5 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    main()
 
