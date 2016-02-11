@@ -177,7 +177,8 @@ def main():
         # install to usb removable media, files must be placed into EFI/BOOT/
         syslinux_uefi_path = os.path.join(mount_point, USB_MODE_PATH)
     else:
-        syslinux_uefi_path = os.path.join(mount_point, PC_MODE_PATH)
+        sys.exit("PC mode currently not supported.")
+        #syslinux_uefi_path = os.path.join(mount_point, PC_MODE_PATH)
     print("\tsyslinux_uefi_path: {}".format(syslinux_uefi_path))
     syslinux_bios_path = os.path.join(mount_point, BIOS_PATH)
     print("\tsyslinux_bios_path: {}".format(syslinux_bios_path))
@@ -196,18 +197,6 @@ def main():
 
     install_syslinux_uefi(uefi_mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name)
     install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt_path, crypt_name)
-
-    #base_path = os.path.join(args.mount_point, PC_MODE_PATH)
-    #syslinux_path = os.path.join(base_path, 'syslinux')
-    #arch_path = os.path.join(base_path, 'arch')
-
-    #if args.update_kernel_only:
-    #    copy_boot_files(arch_path)
-    #else:
-    #    copy_syslinux_files(syslinux_path)
-    #    set_efi_boot_entry(path)
-    #    copy_boot_files(arch_path)
-    #    create_syslinux_cfg(syslinux_path)
 
     print("Done.")
 

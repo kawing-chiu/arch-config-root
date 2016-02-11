@@ -185,6 +185,7 @@ def main():
     # currently, unbound-control-setup has a serious bug
     #unbound_setup()
 
+    # not needed anymore
     #goagent_setup()
 
     change_root_password()

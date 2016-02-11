@@ -14,6 +14,7 @@ from bootstrap_new_arch_system import ADMIN_USER_NAME
 ROOT_FILE_LIST = [
     '~/.gitconfig',
     '~/.vps-proxy',
+    '~/.mykeyfile',
     '~/.ssh/id_rsa',
     '~/.ssh/id_rsa.pub',
     '/opt/dicts/',
@@ -32,17 +33,20 @@ def pacstrap(target_dir):
 
 def _copy_to_dir(target_dir, file_):
     file_ = os.path.abspath(os.path.expanduser(file_))
-    print('\tcopying {}'.format(file_))
+    print("\tcopying {}".format(file_))
+    if not os.path.exists(file_):
+        print("\tWARNING: {} does not exist".format(file_))
+        return
     if not os.path.isdir(file_):
         dir_, base = os.path.split(file_)
         new_dir = target_dir + dir_
-        print('\tto: {}'.format(new_dir))
+        print("\tto: {}".format(new_dir))
         os.makedirs(new_dir, exist_ok=True)
         shutil.copy(file_, new_dir)
     else:
         dir_ = file_
         new_dir = target_dir + dir_
-        print('\tto: {}'.format(new_dir))
+        print("\tto: {}".format(new_dir))
         shutil.copytree(file_, new_dir, symlinks=True)
 
 def copy_root_files(target_dir, file_list):
@@ -92,11 +96,11 @@ def main():
     args = _parse_args()
     target_dir = os.path.abspath(args.target_dir)
 
-    #pacstrap(target_dir)
-    #gen_fstab(target_dir)
-    #copy_root_files(target_dir, ROOT_FILE_LIST)
-    #get_config(target_dir)
-    #chroot(target_dir)
+    pacstrap(target_dir)
+    gen_fstab(target_dir)
+    copy_root_files(target_dir, ROOT_FILE_LIST)
+    get_config(target_dir)
+    chroot(target_dir)
     copy_user_files(target_dir, USER_FILE_LIST)
 
 
