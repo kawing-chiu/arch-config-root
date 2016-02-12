@@ -42,12 +42,12 @@ def _copy_to_dir(target_dir, file_):
         new_dir = target_dir + dir_
         print("\tto: {}".format(new_dir))
         os.makedirs(new_dir, exist_ok=True)
-        shutil.copy(file_, new_dir)
+        return shutil.copy(file_, new_dir)
     else:
         dir_ = file_
         new_dir = target_dir + dir_
         print("\tto: {}".format(new_dir))
-        shutil.copytree(file_, new_dir, symlinks=True)
+        return shutil.copytree(file_, new_dir, symlinks=True)
 
 def copy_root_files(target_dir, file_list):
     print("Copying files...")

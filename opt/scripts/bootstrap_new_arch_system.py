@@ -131,11 +131,8 @@ def create_admin_user():
     run(['passwd', ADMIN_USER_NAME])
 
 def copy_ssh_keys():
-    user_record = pwd.getpwnam(ADMIN_USER_NAME)
-    user_name = user_record.pw_name
-    user_dir = user_record.pw_dir
-    uid = user_record.pw_uid
-    gid = user_record.pw_gid
+    user_name = ADMIN_USER_NAME
+    uid, gid, user_dir = get_user_info(user_name)
 
     ssh_dir = os.path.join(user_dir, '.ssh')
     if not os.path.exists(ssh_dir):

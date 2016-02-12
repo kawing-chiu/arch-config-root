@@ -4,7 +4,7 @@ import os
 from multiprocessing import Process
 
 
-def _get_user_info(user_name):
+def get_user_info(user_name):
     user_record = pwd.getpwnam(user_name)
     user_home = user_record.pw_dir
     uid = user_record.pw_uid
@@ -22,7 +22,7 @@ def call_f_as_user(user_name, f, args=(), kwargs={}):
     if os.geteuid() != 0:
         raise OSError("You're not root, cannot run "
                 "function as other user.")
-    uid, gid, user_home = _get_user_info(user_name)
+    uid, gid, user_home = get_user_info(user_name)
 
     def _f():
         _change_user(uid, gid)
@@ -44,7 +44,7 @@ def run_as_user(user_name, cmd, cwd=None, **kwargs):
     if os.geteuid() != 0:
         raise OSError("You're not root, cannot run "
                 "program as other user.")
-    uid, gid, user_home = _get_user_info(user_name)
+    uid, gid, user_home = get_user_info(user_name)
 
     env = kwargs.pop('env', None)
     if env is None:
