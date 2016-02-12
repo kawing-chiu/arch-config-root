@@ -14,7 +14,7 @@
 
 !/.gitignore
 
-#!/etc/
+!/etc/
 !/etc/profile
 !/etc/bash.bashrc
 !/etc/sudoers
@@ -40,8 +40,8 @@
 #!/etc/unbound/
 !/etc/unbound/unbound.conf
 
-#!/etc/systemd/
-#!/etc/systemd/system/
+!/etc/systemd/
+!/etc/systemd/system/
 !/etc/systemd/system/**/*
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 
