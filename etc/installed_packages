@@ -16,6 +16,7 @@ bison
 bluez
 bluez-firmware
 boost
+bridge-utils
 bzip2
 caja
 caja-gksu
@@ -36,10 +37,13 @@ device-mapper
 dhcpcd
 diffutils
 djvulibre
+dmidecode
 dnscrypt-proxy
+dnsmasq
 dos2unix
 dosfstools
 e2fsprogs
+ebtables
 efibootmgr
 encfs
 engrampa
@@ -57,6 +61,7 @@ file
 filesystem
 findutils
 firefox
+firewalld
 flex
 freetds
 galculator-gtk2
@@ -162,6 +167,7 @@ phantomjs
 pkg-config
 pkgfile
 pluma
+pm-utils
 polipo
 postgresql
 procps-ng
