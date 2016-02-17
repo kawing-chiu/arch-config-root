@@ -90,7 +90,7 @@ def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name):
 
     LABEL arch
         KERNEL {rel_path}/vmlinuz-linux
-        APPEND ro cryptdevice=UUID={crypt_uuid}:{crypt_name} root={root_part} intel_iommu=on
+        APPEND rw cryptdevice=UUID={crypt_uuid}:{crypt_name} root={root_part} intel_iommu=on
         INITRD {rel_path}/initramfs-linux.img
     """
 
