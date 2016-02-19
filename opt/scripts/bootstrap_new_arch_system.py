@@ -66,6 +66,10 @@ def set_time_zone():
     print("Setting time zone...")
     os.symlink('/usr/share/zoneinfo/Asia/Shanghai', '/etc/localtime')
 
+def set_local_time():
+    print("Setting local time...")
+    run(['timedatectl', 'set-local-rtc', '1'])
+
 def gen_locales():
     print("Generating locales...")
     run(['locale-gen'])
@@ -176,6 +180,7 @@ def main():
     install_packages()
     set_host_name()
     set_time_zone()
+    set_local_time()
     gen_locales()
     make_initramfs()
 
