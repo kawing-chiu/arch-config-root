@@ -79,11 +79,11 @@ def copy_arch_boot_files(target_path):
 #    print("New boot entries:")
 #    subprocess.call(['efibootmgr'])
 
-def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name):
+def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name, type_):
     print("Generating syslinux config...")
     cfg_template = """
     DEFAULT arch
-    SAY Syslinux UEFI now loading......
+    SAY Syslinux {type} now loading......
 
     TIMEOUT 15
     PROMPT 1
@@ -100,7 +100,8 @@ def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name):
     root_part = _get_partition_by_path('/')
 
     config = cfg_template.format(crypt_uuid=crypt_uuid,
-            crypt_name=crypt_name, root_part=root_part, rel_path=rel_path)
+            crypt_name=crypt_name, root_part=root_part,
+            rel_path=rel_path, type=type_)
     lines = config.splitlines()
     lines = map(lambda x: x[4:], lines)
     config = '\n'.join(lines)
@@ -113,7 +114,7 @@ def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name):
 def install_syslinux_uefi(mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name):
     copy_syslinux_uefi_files(syslinux_uefi_path, mode)
     copy_arch_boot_files(arch_path)
-    create_syslinux_cfg(syslinux_uefi_path, arch_path, crypt_path, crypt_name)
+    create_syslinux_cfg(syslinux_uefi_path, arch_path, crypt_path, crypt_name, 'UEFI')
 
 def install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt_path, crypt_name):
     copy_syslinux_bios_files(syslinux_bios_path)
@@ -123,7 +124,7 @@ def install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt
     #cmd = ['syslinux', '-i', '-d', BIOS_PATH, partition]
     # this seems working
     cmd = ['extlinux', '-i', syslinux_bios_path]
-    print("\tsyslinux command line: {}".format(cmd))
+    print("\tcommand line: {}".format(cmd))
     run(cmd)
 
     print("Writing MBR...")
@@ -137,7 +138,7 @@ def install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt
     run(['sgdisk', '--attributes=' + part_num + ':set:2', device])
     print("\tcheck with 'sgdisk -A {}:show {}'".format(part_num, device))
 
-    create_syslinux_cfg(syslinux_bios_path, arch_path, crypt_path, crypt_name)
+    create_syslinux_cfg(syslinux_bios_path, arch_path, crypt_path, crypt_name, 'BIOS')
 
 def _test_paths(paths):
     print("Checking installation paths...")
