@@ -166,6 +166,14 @@ def get_user_config():
     run_as_user(ADMIN_USER_NAME, ['git', 'clone',
         'git@github.com:kawing-chiu/exc.git', 'exercises'])
 
+def config_samba():
+    print("Configuring samba...")
+    run(['smbpasswd', '-a', ADMIN_USER_NAME])
+    qemu_share_dir = 'qemu_share'
+    call_f_as_user(ADMIN_USER_NAME, os.makedirs,
+            args=(qemu_share_dir,),
+            kwargs={'exist_ok': Ture})
+
 def create_efi_mount_point():
     efi_dir = '/boot/efi'
     print("Creating EFI mount point: {}".format(efi_dir))
@@ -194,6 +202,7 @@ def main():
     add_special_groups()
     create_admin_user()
     get_user_config()
+    config_samba()
 
     create_efi_mount_point()
     note()
