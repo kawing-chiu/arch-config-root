@@ -30,15 +30,18 @@
 !/etc/libao.conf
 !/etc/odbcinst.ini
 
-#!/etc/mkinitcpio.d/
+!/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
 
-#!/etc/ssh/
+!/etc/ssh/
 !/etc/ssh/sshd_config
 !/etc/ssh/ssh_config
 
-#!/etc/unbound/
+!/etc/unbound/
 !/etc/unbound/unbound.conf
+
+!/etc/samba/
+!/etc/samba/smb.conf
 
 !/etc/systemd/
 !/etc/systemd/system/
@@ -46,17 +49,17 @@
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 /etc/systemd/system/multi-user.target.wants/netctl-ifplugd@*
 
-#!/etc/security/
+!/etc/security/
 !/etc/security/limits.conf
 
-#!/etc/pacman.d/
+!/etc/pacman.d/
 !/etc/pacman.d/mirrorlist
 
-#!/etc/polipo/
+!/etc/polipo/
 !/etc/polipo/config
 
-#!/opt/
-#!/opt/scripts/
+!/opt/
+!/opt/scripts/
 !/opt/scripts/_utils.py
 !/opt/scripts/gen_installed_packages.py
 !/opt/scripts/update_goagent_ip.py
@@ -68,7 +71,7 @@
 !/opt/scripts/init_postgres_db.py
 !/opt/scripts/prepare_arch_chroot.py
 
-#!/root/
+!/root/
 !/root/.bashrc
 !/root/.bash_profile
 !/root/.ssh/config
