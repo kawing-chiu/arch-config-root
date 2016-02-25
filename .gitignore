@@ -55,6 +55,10 @@
 !/etc/pacman.d/
 !/etc/pacman.d/mirrorlist
 
+!/etc/netctl/
+!/etc/netctl/interfaces/
+!/etc/netctl/interfaces/wlp-any
+
 !/etc/polipo/
 !/etc/polipo/config
 
