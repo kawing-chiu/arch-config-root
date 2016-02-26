@@ -91,6 +91,7 @@ htop
 ibus
 ibus-pinyin
 ibus-qt
+ifenslave
 ifplugd
 inetutils
 iproute2
@@ -238,6 +239,7 @@ xf86-input-mouse
 xf86-input-synaptics
 xf86-input-vmmouse
 xf86-input-void
+xf86-video-amdgpu
 xf86-video-ark
 xf86-video-ati
 xf86-video-dummy
