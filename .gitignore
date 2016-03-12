@@ -57,7 +57,7 @@
 
 !/etc/netctl/
 !/etc/netctl/interfaces/
-!/etc/netctl/interfaces/wlp-any
+!/etc/netctl/interfaces/*
 
 !/etc/polipo/
 !/etc/polipo/config

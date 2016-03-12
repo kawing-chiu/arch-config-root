@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+for interface in /sys/class/net/enp*;
+do
+    break;
+done
+Interface=$(basename $interface)
+echo "wlp-any: using interface $Interface"
