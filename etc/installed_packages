@@ -1,3 +1,4 @@
+acetoneiso2
 ack
 alsa-firmware
 alsa-utils
@@ -70,11 +71,14 @@ gcc
 gcc-fortran
 gcc-libs
 gdb
+gegl02
 gemrb
+geoclue2
 gettext
 gimp
 git
 glibc
+gnutls
 go
 goagent
 goldendict
@@ -84,6 +88,7 @@ grep
 grub
 gsl
 gst-plugins-good
+gtk2
 gvfs-mtp
 gzip
 hostapd
@@ -102,9 +107,17 @@ iw
 jdk8-openjdk
 jfsutils
 kdenlive
+ldns
 less
+libdatrie
+libevent
+libimobiledevice
+libpagemaker
 libreoffice-fresh
+libshout
+libthai
 libtool
+libvirt
 licenses
 linux
 linux-headers
@@ -146,6 +159,7 @@ mesa-demos
 mozo
 mtools
 nano
+neon
 net-tools
 netctl
 nginx
@@ -186,6 +200,7 @@ python-pyqt4
 python-sqlalchemy
 python-systemd
 python-virtualenv
+python2
 python2-pip
 python2-pygeoip
 python2-virtualenv
@@ -201,6 +216,7 @@ scons
 screen
 sed
 shadow
+sqlite
 sshfs
 strace
 subversion
@@ -214,6 +230,7 @@ terminator
 terminus-font
 texinfo
 tk
+traceroute
 twine
 unbound
 unrar
