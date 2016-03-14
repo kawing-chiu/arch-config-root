@@ -226,6 +226,7 @@ sysfsutils
 syslinux
 systemd-sysvcompat
 tar
+tcpdump
 terminator
 terminus-font
 texinfo

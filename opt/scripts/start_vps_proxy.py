@@ -9,6 +9,7 @@ this script. The configuration format is like the following:
 
     [vps1]
     host = 
+    port = 
     user = 
     password = 
     prompt = 
@@ -21,9 +22,13 @@ from functools import partial
 import sys
 import os
 import gc
+import platform
 
 import pexpect
-import systemd.daemon
+
+LINUX = platform.system() == 'Linux'
+if LINUX:
+    import systemd.daemon
 
 
 LOCAL_PORT = 8088
@@ -50,13 +55,17 @@ def read_config():
     config.read(CONFIG_FILE)
     current_vps = config['current']['vps']
     vps_config = config[current_vps]
+    vps_config.setdefault('port', '22')
     vps_config['prompt'] = _sanitize(vps_config['prompt'])
     return vps_config
 
 def start_tunnel(config):
-    cmd = 'ssh -C -o ControlMaster=no -D {local_port} {user}@{host}'
+    cmd = 'ssh -C -o ControlMaster=no -D {local_port} -p {port} {user}@{host}'
     cmd = cmd.format(local_port=LOCAL_PORT,
-        user=config['user'], host=config['host'])
+        port=config['port'],
+        user=config['user'],
+        host=config['host']
+    )
 
     while True:
         print("Spawning tunnel...")
@@ -106,7 +115,8 @@ def shutdown_tunnel(ssh_tunnel):
 def run():
     config = read_config()
     ssh_tunnel = start_tunnel(config)
-    systemd.daemon.notify('READY=1')
+    if LINUX:
+        systemd.daemon.notify('READY=1')
 
     bad_count = 0
     while True:
