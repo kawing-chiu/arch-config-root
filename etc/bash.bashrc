@@ -35,6 +35,10 @@ alias pip-pypy='/opt/pypy/bin/pip'
 alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
 alias ipython-pypy='/opt/pypy/bin/ipython'
 
+# ss/netstat
+# listening, numeric, tcp, udp, processes
+alias Ss='ss -lntup'
+
 polipo_proxy () {
     export http_proxy='http://127.0.0.1:8123'
     export https_proxy=$http_proxy
