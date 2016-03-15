@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+  <short>Internal</short>
+  <description>For use on internal networks. You mostly trust the other computers on the networks to not harm your computer. Only selected incoming connections are accepted.</description>
+  <interface name="virbr0"/>
+  <service name="dhcpv6-client"/>
+  <service name="samba"/>
+</zone>

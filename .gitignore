@@ -49,6 +49,10 @@
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 /etc/systemd/system/multi-user.target.wants/netctl-ifplugd@*
 
+!/etc/firewalld/
+!/etc/firewalld/zones/
+!/etc/firewalld/zones/internal.xml
+
 !/etc/security/
 !/etc/security/limits.conf
 
