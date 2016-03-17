@@ -31,6 +31,8 @@ alias vim='vim -p'
 alias vi='vim -p'
 alias less='less -R'
 
+alias sc='screen'
+
 alias pip-pypy='/opt/pypy/bin/pip'
 alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
 alias ipython-pypy='/opt/pypy/bin/ipython'
