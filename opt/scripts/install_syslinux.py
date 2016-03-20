@@ -11,6 +11,8 @@ import re
 
 from _utils import *
 
+# TODO: clean up the code, it's too ugly
+
 
 # target path inside EFI partition
 PC_MODE_PATH = 'EFI/syslinux/'
@@ -154,8 +156,8 @@ def _parse_args():
             help="mount point of EFI partition, e.g. /boot/efi")
     parser.add_argument('-m', '--uefi-mode', choices=['pc', 'usb'], default='usb',
             help="update kernel only without installing syslinux")
-    #parser.add_argument('-u', '--update-kernel-only', action='store_true',
-    #        help="update kernel only without installing syslinux")
+    parser.add_argument('-u', '--update', action='store_true',
+            help="update kernel only")
     args = parser.parse_args()
 
     if not os.path.ismount(args.mount_point):
@@ -171,8 +173,12 @@ def main():
     partition = _get_partition_by_path(mount_point)
     device = partition[:-1]
     part_num = partition[-1]
-    print("Installing syslinux to '{}', device: {}, partition num: {}".format(
-        mount_point, device, part_num))
+    if args.update:
+        print("Updating the kernel in '{}', device: {}, partition num: {}".format(
+            mount_point, device, part_num))
+    else:
+        print("Installing syslinux to '{}', device: {}, partition num: {}".format(
+            mount_point, device, part_num))
 
     if uefi_mode == 'usb':
         # install to usb removable media, files must be placed into EFI/BOOT/
@@ -186,18 +192,22 @@ def main():
     arch_path = os.path.join(mount_point, ARCH_PATH)
     print("\tarch_path: {}".format(arch_path))
 
-    confirm = input("Please check the above information and confirm (type uppercase yes): ")
+    confirm = input("Check the above information and confirm (type uppercase yes): ")
     if confirm != 'YES':
         sys.exit()
 
     #_test_paths([syslinux_uefi_path, syslinux_bios_path])
+    if args.update:
+        copy_arch_boot_files(arch_path)
+    else:
+        crypt_path = input("Input the path of the encrypted partition, "
+                "i.e. /dev/sda3: ").strip()
+        crypt_name = input("The name of the crypt device, i.e. luks_on_sdxc: ")
 
-    crypt_path = input("Please input the path of the encrypted partition, "
-            "i.e. /dev/sda3: ").strip()
-    crypt_name = input("The name of the crypt device, i.e. luks_on_sdxc: ")
+        install_syslinux_uefi(uefi_mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name)
+        install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt_path, crypt_name)
 
-    install_syslinux_uefi(uefi_mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name)
-    install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt_path, crypt_name)
+    run(['sync'])
 
     print("Done.")
 
