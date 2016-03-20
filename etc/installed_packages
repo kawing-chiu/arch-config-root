@@ -109,6 +109,8 @@ jfsutils
 kdenlive
 ldns
 less
+lib32-alsa-plugins
+lib32-curl
 libdatrie
 libevent
 libimobiledevice
@@ -218,6 +220,7 @@ sed
 shadow
 sqlite
 sshfs
+steam
 strace
 subversion
 sudo
