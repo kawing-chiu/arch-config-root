@@ -44,6 +44,7 @@
 !/etc/samba/smb.conf
 
 !/etc/systemd/
+!/etc/systemd/resolved.conf
 !/etc/systemd/system/
 !/etc/systemd/system/**/*
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
