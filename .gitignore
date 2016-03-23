@@ -49,6 +49,7 @@
 !/etc/systemd/resolved.conf
 !/etc/systemd/system/
 !/etc/systemd/system/**/*
+/etc/systemd/system/multi-user.target.wants/wpa_supplicant@*
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 /etc/systemd/system/multi-user.target.wants/netctl-ifplugd@*
 
