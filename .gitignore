@@ -24,11 +24,13 @@
 !/etc/vconsole.conf
 !/etc/mkinitcpio.conf
 !/etc/resolvconf.conf
+!/etc/resolv.conf
 !/etc/pacman.conf
 !/etc/installed_packages
 !/etc/installed_packages_local
 !/etc/libao.conf
 !/etc/odbcinst.ini
+!/etc/nsswitch.conf
 
 !/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
