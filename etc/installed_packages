@@ -182,6 +182,7 @@ pciutils
 pcmciautils
 perl
 phantomjs
+phoronix-test-suite
 pkg-config
 pkgfile
 pluma
