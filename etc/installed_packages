@@ -4,6 +4,7 @@ alsa-firmware
 alsa-utils
 anki
 arch-install-scripts
+assimp
 atril
 audacity
 autoconf
@@ -91,6 +92,7 @@ gst-plugins-good
 gtk2
 gvfs-mtp
 gzip
+hardinfo
 hostapd
 htop
 ibus
