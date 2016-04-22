@@ -182,6 +182,7 @@ ovmf
 p7zip
 pacman
 patch
+pax-utils
 pciutils
 pcmciautils
 perl
