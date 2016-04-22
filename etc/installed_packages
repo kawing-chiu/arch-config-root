@@ -28,6 +28,7 @@ caja-sendto
 caja-share
 calibre
 chromium
+chrpath
 clang
 cmake
 coreutils
@@ -172,6 +173,7 @@ nodejs
 npm
 ntfs-3g
 ntp
+nuitka
 openconnect
 openmpi
 openssh
