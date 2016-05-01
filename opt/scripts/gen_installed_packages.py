@@ -12,14 +12,26 @@ import subprocess
 OUT_PKG_FILE = '/etc/installed_packages'
 
 
-def run():
+def main():
+    args = _parse_args()
     with open(OUT_PKG_FILE, 'w') as f:
         p = subprocess.Popen(['pacman', '-Qqen'], stdout=f)
         p.wait()
-    with open(OUT_PKG_FILE + '_local', 'w') as f:
-        p = subprocess.Popen(['pacman', '-Qqm'], stdout=f)
-        p.wait()
+    if args.local:
+        with open(OUT_PKG_FILE + '_local', 'w') as f:
+            p = subprocess.Popen(['pacman', '-Qqm'], stdout=f)
+            p.wait()
 
-if __name__ == "__main__":
-    run()
+def _parse_args():
+    from argparse import ArgumentParser
+    parser = ArgumentParser(description="")
+    parser.add_argument('-l', '--local', action='store_true',
+            help="also update non-official packages list")
+    args = parser.parse_args()
+    return args
+
+
+if __name__ == '__main__':
+    main()
+
 
