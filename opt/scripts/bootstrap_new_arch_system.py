@@ -155,6 +155,8 @@ def get_user_config():
 
     copy_ssh_keys()
 
+    input("Press any key to continue...")
+
     run_as_user(ADMIN_USER_NAME, ['git', 'init'])
     run_as_user(ADMIN_USER_NAME, ['git', 'remote', 'add', 'origin',
         'git@github.com:kawing-chiu/arch-config-home.git'])

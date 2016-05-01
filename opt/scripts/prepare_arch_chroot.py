@@ -42,7 +42,8 @@ def pacstrap(target_dir):
     print("Running pacstrap...")
     # TODO: consider installing more packages here so that we can save the time
     # downloading the packages inside the chroot
-    pkgs = ['base', 'vim', 'git', 'openssh', 'python', 'bash-completion']
+    pkgs = ['base', 'base-devel', 'vim', 'git', 'openssh', 'python',
+            'bash-completion', 'xorg', 'clang', 'firefox', 'chromium']
     # '-c' means to use the package cache on the host
     run(['pacstrap', '-c', target_dir, *pkgs])
 
@@ -88,6 +89,8 @@ def chroot(target_dir):
 
 def get_config(target_dir):
     print("Loading system configs from github...")
+
+    input("Press any key to continue...")
 
     old_cwd = os.getcwd()
     os.chdir(target_dir)
