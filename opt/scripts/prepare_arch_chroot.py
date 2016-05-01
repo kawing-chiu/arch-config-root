@@ -37,6 +37,9 @@ USER_FILE_LIST = [
     '~/.config/chromium',
 ]
 
+# a relative path should be used
+SWAP_FILE = 'swapfile'
+
 
 def pacstrap(target_dir):
     print("Running pacstrap...")
@@ -79,7 +82,7 @@ def gen_fstab(target_dir):
     print("Generating fstab...")
     out_fstab = target_dir + '/etc/fstab'
     with open(out_fstab, 'ab') as f:
-        p = Popen(['genfstab', '-p', '/mnt'], stdout=f)
+        p = Popen(['genfstab', '-p', target_dir], stdout=f)
         p.communicate()
 
 def chroot(target_dir):
@@ -103,6 +106,14 @@ def get_config(target_dir):
 
     os.chdir(old_cwd)
 
+def create_swap_file(target_dir):
+    print("Creating swap file...")
+    size = input("The size of the swap file: ")
+    swap_file = os.path.join(target_dir, SWAP_FILE)
+    run(['fallocate', '-l', size, swap_file])
+    run(['chmod', '600', swap_file])
+    run(['mkswap', swap_file])
+
 def _parse_args():
     from argparse import ArgumentParser
     parser = ArgumentParser(description="")
@@ -118,8 +129,11 @@ def main():
     gen_fstab(target_dir)
     copy_root_files(target_dir, ROOT_FILE_LIST)
     get_config(target_dir)
+    create_swap_file(target_dir)
     chroot(target_dir)
     copy_user_files(target_dir, USER_FILE_LIST)
+
+    print("Done.")
 
 
 if __name__ == '__main__':

@@ -45,7 +45,6 @@ from _utils import *
 
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
-SWAP_FILE = '/swapfile'
 ADMIN_USER_NAME = 'statistician'
 ADMIN_SYSTEM_GROUPS = ['wheel', 'raise_nofile_limit']
 
@@ -177,13 +176,6 @@ def config_samba():
             args=(qemu_share_dir,),
             kwargs={'exist_ok': True})
 
-def create_swap_file():
-    print("Creating swap file...")
-    size = input("The size of the swap file: ")
-    run(['fallocate', '-l', size, SWAP_FILE])
-    run(['chmod', '600', SWAP_FILE])
-    run(['mkswap', SWAP_FILE])
-
 def create_efi_mount_point():
     efi_dir = '/boot/efi'
     print("Creating EFI mount point: {}".format(efi_dir))
@@ -216,7 +208,6 @@ def main():
     get_user_config()
     config_samba()
 
-    create_swap_file()
     create_efi_mount_point()
     note()
 
