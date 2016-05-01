@@ -191,8 +191,8 @@ def create_efi_mount_point():
 
 def note():
     print("Note that this script does not install a bootloader. "
-            "To install syslinux, run install_syslinux.py manually "
-            "*inside* this chroot.")
+            "To install syslinux, mount and format /boo/efi and run "
+            "install_syslinux.py manually *inside* this chroot.")
     print("Also check /etc/fstab to confirm everything is ok, i.e. "
             "whether the swap file entry is added.")
 
