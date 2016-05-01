@@ -175,7 +175,7 @@ def config_samba():
     qemu_share_dir = 'qemu_share'
     call_f_as_user(ADMIN_USER_NAME, os.makedirs,
             args=(qemu_share_dir,),
-            kwargs={'exist_ok': Ture})
+            kwargs={'exist_ok': True})
 
 def create_swap_file():
     print("Creating swap file...")
