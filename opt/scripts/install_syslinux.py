@@ -30,7 +30,7 @@ def _get_partition_by_path(path):
     return full_dev_path
 
 
-def copy_syslinux_uefi_files(target_path, uefi_mode):
+def copy_syslinux_uefi_files(target_path):
     print("Copying syslinux uefi files to {}...".format(target_path))
     if not os.path.exists(target_path):
         os.makedirs(target_path)
@@ -39,11 +39,10 @@ def copy_syslinux_uefi_files(target_path, uefi_mode):
     for file_ in os.listdir(syslinux_files_dir):
         shutil.copy(os.path.join(syslinux_files_dir, file_), target_path)
 
-    if uefi_mode == 'usb':
-        old_efi_bin = os.path.join(target_path, 'syslinux.efi')
-        new_efi_bin = os.path.join(target_path, 'bootx64.efi')
-        print("\trename {} to {}".format(old_efi_bin, new_efi_bin))
-        shutil.move(old_efi_bin, new_efi_bin)
+    old_efi_bin = os.path.join(target_path, 'syslinux.efi')
+    new_efi_bin = os.path.join(target_path, 'bootx64.efi')
+    print("\trename {} to {}".format(old_efi_bin, new_efi_bin))
+    shutil.move(old_efi_bin, new_efi_bin)
 
 def copy_syslinux_bios_files(target_path):
     print("Copying syslinux bios files to {}...".format(target_path))
@@ -112,8 +111,8 @@ def create_syslinux_cfg(syslinux_path, arch_path, crypt_path, crypt_name, type_)
         print("\tcreate syslinux UEFI config file {}".format(cfg_file))
         f.write(config)
 
-def install_syslinux_uefi(mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name):
-    copy_syslinux_uefi_files(syslinux_uefi_path, mode)
+def install_syslinux_uefi(arch_path, syslinux_uefi_path, crypt_path, crypt_name):
+    copy_syslinux_uefi_files(syslinux_uefi_path)
     copy_arch_boot_files(arch_path)
     create_syslinux_cfg(syslinux_uefi_path, arch_path, crypt_path, crypt_name, 'UEFI')
 
@@ -195,7 +194,7 @@ def main():
                 "i.e. /dev/sda3: ").strip()
         crypt_name = input("The name of the crypt device, i.e. luks_on_sdxc: ")
 
-        install_syslinux_uefi(uefi_mode, arch_path, syslinux_uefi_path, crypt_path, crypt_name)
+        install_syslinux_uefi(arch_path, syslinux_uefi_path, crypt_path, crypt_name)
         install_syslinux_bios(arch_path, syslinux_bios_path, device, part_num, crypt_path, crypt_name)
 
     run(['sync'])
