@@ -21,11 +21,11 @@ following steps:
     git fetch
     git checkout -t -f origin/master
 
-    (the above steps may be moved to a script in the future)
+    (the above steps has been implemented in prepare_arch_chroot.py)
 
 After running this script, there are some steps remaining:
 
-    create a network profile in /etc/netctl
+    create network profiles
     configure boot-loader
     edit /etc/fstab and /etc/crypttab
     copy .mozilla, .config/chromium folders

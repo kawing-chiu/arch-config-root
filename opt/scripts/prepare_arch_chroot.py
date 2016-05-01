@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 """Prepare a directory for arch chroot.
+
+Before using this script, the disk should be partitioned and properly set up
+using cryptsetup and lvm. Some commands for reference:
+
+    cryptsetup luksFormat <partition>
+    cryptsetup luksOpen <partition> <crypt_mapper_name>
+    pvcreate -v <crypt_mapper>
+    vgcreate -v <vg_name> <crypt_mapper>
+    lvcreate -v -n <lv_name> -L/-l <size> <vg_name>
+    mkfs.ext4 -v /dev/<vg_name>/<lv_name>
+
 """
 import sys
 import os
@@ -29,7 +40,11 @@ USER_FILE_LIST = [
 
 def pacstrap(target_dir):
     print("Running pacstrap...")
-    run(['pacstrap', target_dir, 'base', 'vim', 'git', 'openssh', 'python', 'bash-completion'])
+    # TODO: consider installing more packages here so that we can save the time
+    # downloading the packages inside the chroot
+    pkgs = ['base', 'vim', 'git', 'openssh', 'python', 'bash-completion']
+    # '-c' means to use the package cache on the host
+    run(['pacstrap', '-c', target_dir, *pkgs])
 
 def _copy_to_dir(target_dir, file_):
     file_ = os.path.abspath(os.path.expanduser(file_))
