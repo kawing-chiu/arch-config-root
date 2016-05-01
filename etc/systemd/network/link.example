@@ -1,0 +1,7 @@
+[Match]
+MACAddress=08:57:00:18:06:6e
+
+
+[Link]
+MACAddressPolicy=none
+Name=tplink_wdn4200

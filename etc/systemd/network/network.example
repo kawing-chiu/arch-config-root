@@ -1,0 +1,7 @@
+[Match]
+Name=umx_wifi0
+
+[Network]
+DHCP=ipv4
+DNS=127.0.0.1
+

@@ -1,0 +1,5 @@
+# reading passphrase from stdin
+network={
+	ssid="CandyTime_aaaaa"
+	psk="chw999111"
+}

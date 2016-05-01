@@ -43,7 +43,7 @@ def pacstrap(target_dir):
     # TODO: consider installing more packages here so that we can save the time
     # downloading the packages inside the chroot
     pkgs = ['base', 'base-devel', 'vim', 'git', 'openssh', 'python',
-            'bash-completion', 'xorg', 'clang', 'firefox', 'chromium']
+            'bash-completion', 'xorg', 'clang', 'vlc', 'firefox', 'chromium']
     # '-c' means to use the package cache on the host
     run(['pacstrap', '-c', target_dir, *pkgs])
 
