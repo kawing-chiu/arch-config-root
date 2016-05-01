@@ -15,7 +15,6 @@ from _utils import *
 
 
 # target path inside EFI partition
-PC_MODE_PATH = 'EFI/syslinux/'
 USB_MODE_PATH = 'EFI/BOOT/'
 
 BIOS_PATH = 'syslinux_bios/'
@@ -154,8 +153,6 @@ def _parse_args():
     parser = ArgumentParser(description="")
     parser.add_argument('mount_point', default='/boot/efi', nargs='?',
             help="mount point of EFI partition, e.g. /boot/efi")
-    parser.add_argument('-m', '--uefi-mode', choices=['pc', 'usb'], default='usb',
-            help="update kernel only without installing syslinux")
     parser.add_argument('-u', '--update', action='store_true',
             help="update kernel only")
     args = parser.parse_args()
@@ -167,7 +164,6 @@ def _parse_args():
 
 def main():
     args = _parse_args()
-    uefi_mode = args.uefi_mode
     mount_point = args.mount_point
 
     partition = _get_partition_by_path(mount_point)
@@ -180,12 +176,7 @@ def main():
         print("Installing syslinux to '{}', device: {}, partition num: {}".format(
             mount_point, device, part_num))
 
-    if uefi_mode == 'usb':
-        # install to usb removable media, files must be placed into EFI/BOOT/
-        syslinux_uefi_path = os.path.join(mount_point, USB_MODE_PATH)
-    else:
-        sys.exit("PC mode currently not supported.")
-        #syslinux_uefi_path = os.path.join(mount_point, PC_MODE_PATH)
+    syslinux_uefi_path = os.path.join(mount_point, USB_MODE_PATH)
     print("\tsyslinux_uefi_path: {}".format(syslinux_uefi_path))
     syslinux_bios_path = os.path.join(mount_point, BIOS_PATH)
     print("\tsyslinux_bios_path: {}".format(syslinux_bios_path))
