@@ -45,7 +45,7 @@ from _utils import *
 
 
 PACKAGES_LIST_FILE = '/etc/installed_packages'
-ADMIN_USER_NAME = 'statistician'
+DEFAULT_ADMIN_USER = 'statistician'
 ADMIN_SYSTEM_GROUPS = ['wheel', 'raise_nofile_limit']
 
 
@@ -124,7 +124,16 @@ def add_special_groups():
             run(['groupadd', '--system', group])
 
 def create_admin_user():
-    print("Creating admin user {}...".format(ADMIN_USER_NAME))
+    print("Creating admin user...")
+
+    # TODO: add full support for installing system for user other than myself
+    user = input("Input the user name of the admin user(empty for default): ")
+    user = user.strip()
+    if not user:
+        user = DEFAULT_ADMIN_USER
+    global ADMIN_USER_NAME
+    ADMIN_USER_NAME = user
+
     run(['useradd', '-m', '-U', '-s', '/bin/bash',
         ADMIN_USER_NAME])
 
@@ -148,7 +157,6 @@ def copy_ssh_keys():
         shutil.copy(src, dest)
         shutil.chown(dest, uid, gid)
 
-
 def get_user_config():
     print("Loading user configs from github...")
 
@@ -160,7 +168,8 @@ def get_user_config():
     run_as_user(ADMIN_USER_NAME, ['git', 'remote', 'add', 'origin',
         'git@github.com:kawing-chiu/arch-config-home.git'])
     run_as_user(ADMIN_USER_NAME, ['git', 'fetch'])
-    run_as_user(ADMIN_USER_NAME, ['git', 'checkout', '-t', '-f', 'origin/master'])
+    run_as_user(ADMIN_USER_NAME, ['git', 'checkout',
+        '-t', '-f', 'origin/master'])
 
     run_as_user(ADMIN_USER_NAME, ['git', 'clone', '--recursive',
         'git@github.com:kawing-chiu/dotvim.git', '.vim'])
