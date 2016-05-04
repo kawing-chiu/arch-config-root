@@ -69,6 +69,10 @@ def set_time_zone():
 def set_local_time():
     print("Setting local time...")
     run(['timedatectl', 'set-local-rtc', '1'])
+    print("\tcontent of /etc/adjtime:")
+    with open('/etc/adjtime', 'r') as f:
+        for line in f:
+            print("\t" + line.rstrip())
 
 def gen_locales():
     print("Generating locales...")
@@ -205,8 +209,7 @@ def main():
     gen_locales()
     make_initramfs()
 
-    # currently, unbound-control-setup has a serious bug
-    #unbound_setup()
+    unbound_setup()
 
     # not needed anymore
     #goagent_setup()
