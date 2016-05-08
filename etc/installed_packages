@@ -9,6 +9,7 @@ atril
 audacity
 autoconf
 automake
+autossh
 awesome
 bash
 bash-completion
@@ -243,6 +244,7 @@ terminus-font
 texinfo
 tk
 traceroute
+transmission-gtk
 ttf-liberation
 twine
 unbound
