@@ -111,8 +111,8 @@ PrintMotd no # pam does that
 UsePrivilegeSeparation sandbox
 #PermitUserEnvironment no
 #Compression delayed
-#ClientAliveInterval 0
-#ClientAliveCountMax 3
+ClientAliveInterval 30
+ClientAliveCountMax 20
 #UseDNS no
 #PidFile /run/sshd.pid
 #MaxStartups 10:30:100
