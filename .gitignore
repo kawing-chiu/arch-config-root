@@ -57,6 +57,9 @@
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 /etc/systemd/system/multi-user.target.wants/netctl-ifplugd@*
 
+!/etc/conf.d/
+!/etc/conf.d/lm_sensors
+
 !/etc/wpa_supplicant/
 !/etc/wpa_supplicant/conf.example
 
