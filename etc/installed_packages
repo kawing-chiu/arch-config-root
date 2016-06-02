@@ -46,6 +46,7 @@ dnscrypt-proxy
 dnsmasq
 dos2unix
 dosfstools
+dropbear
 e2fsprogs
 ebtables
 efibootmgr
