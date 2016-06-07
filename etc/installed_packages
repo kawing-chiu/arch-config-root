@@ -37,6 +37,7 @@ cpupower
 cryptsetup
 ctags
 dconf-editor
+ddrescue
 device-mapper
 dhcpcd
 diffutils
@@ -229,7 +230,9 @@ scons
 screen
 sed
 shadow
+sqlcipher
 sqlite
+sqlite-analyzer
 sshfs
 steam
 strace
@@ -243,6 +246,7 @@ tar
 tcpdump
 terminator
 terminus-font
+testdisk
 texinfo
 tk
 traceroute
