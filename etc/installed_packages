@@ -139,6 +139,7 @@ make
 man-db
 man-pages
 marco
+mariadb
 mate-applets
 mate-backgrounds
 mate-control-center
@@ -163,6 +164,7 @@ mate-user-guide
 mate-user-share
 mate-utils
 mdadm
+memcached
 mercurial
 mesa-demos
 mozo

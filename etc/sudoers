@@ -98,7 +98,7 @@
 root ALL = (ALL) ALL
 
 %wheel ALL = /usr/bin/pacman, /usr/bin/systemctl, /opt/scripts/,\
-                /usr/bin/unbound-control
+                /usr/bin/unbound-control, /usr/bin/mount
 %wheel ALL = NOPASSWD:\
                 /opt/scripts/update_goagent_ip.py,\
                 /usr/bin/unbound-control reload,\
