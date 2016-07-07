@@ -113,6 +113,7 @@ ipython2
 iw
 jdk8-openjdk
 jfsutils
+kchmviewer
 kdenlive
 ldns
 less
@@ -170,6 +171,7 @@ mesa-demos
 mozo
 mtools
 nano
+nanomsg
 neon
 net-tools
 netctl
