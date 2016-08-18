@@ -35,7 +35,6 @@ cmake
 coreutils
 cpupower
 cryptsetup
-ctags
 dconf-editor
 ddrescue
 device-mapper
@@ -149,7 +148,6 @@ mate-icon-theme
 mate-icon-theme-faenza
 mate-media
 mate-menus
-mate-netspeed
 mate-notification-daemon
 mate-panel
 mate-polkit
@@ -168,6 +166,11 @@ mdadm
 memcached
 mercurial
 mesa-demos
+mingw-w64-binutils
+mingw-w64-crt
+mingw-w64-gcc
+mingw-w64-headers
+mingw-w64-winpthreads
 mozo
 mtools
 nano
@@ -258,6 +261,7 @@ transmission-gtk
 tree
 ttf-liberation
 twine
+unace
 unbound
 unrar
 usbutils
