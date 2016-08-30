@@ -216,6 +216,7 @@ pypy
 python
 python-pexpect
 python-pip
+python-psutil
 python-psycopg2
 python-pyqt4
 python-sqlalchemy
@@ -259,7 +260,9 @@ tk
 traceroute
 transmission-gtk
 tree
+ttf-freefont
 ttf-liberation
+ttf-symbola
 twine
 unace
 unbound
