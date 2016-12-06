@@ -48,6 +48,7 @@
 
 !/etc/systemd/
 !/etc/systemd/resolved.conf
+!/etc/systemd/journald.conf
 !/etc/systemd/network/
 !/etc/systemd/network/link.example
 !/etc/systemd/network/network.example
