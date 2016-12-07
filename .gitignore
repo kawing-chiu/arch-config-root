@@ -58,6 +58,9 @@
 /etc/systemd/system/multi-user.target.wants/netctl-auto@*
 /etc/systemd/system/multi-user.target.wants/netctl-ifplugd@*
 
+!/etc/sysctl.d/
+!/etc/sysctl.d/99-sysctl.conf
+
 !/etc/conf.d/
 !/etc/conf.d/lm_sensors
 
@@ -98,3 +101,5 @@
 !/root/.bashrc
 !/root/.bash_profile
 !/root/.ssh/config
+!/root/.vim/
+!/root/.vim/vimrc
