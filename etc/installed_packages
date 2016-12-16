@@ -20,6 +20,7 @@ bluez
 bluez-firmware
 boost
 bridge-utils
+bullet
 bzip2
 caja
 caja-gksu
@@ -30,6 +31,7 @@ caja-share
 calibre
 chromium
 chrpath
+cinnamon
 clang
 cmake
 coreutils
@@ -85,7 +87,6 @@ git
 glibc
 gnutls
 go
-goagent
 goldendict
 gparted
 gptfdisk
@@ -135,6 +136,7 @@ licenses
 linux
 linux-headers
 llvm
+lmdb
 logrotate
 lsof
 lvm2
@@ -193,7 +195,11 @@ npm
 ntfs-3g
 ntp
 nuitka
+ocl-icd
+opencl-headers
+opencl-mesa
 openconnect
+opencv
 openmpi
 openssh
 openvpn
@@ -250,6 +256,7 @@ s-nail
 scala
 scons
 screen
+sdl2
 sed
 shadow
 sqlcipher
@@ -270,6 +277,7 @@ terminator
 terminus-font
 testdisk
 texinfo
+tigervnc
 tk
 traceroute
 transmission-gtk
@@ -367,4 +375,5 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xterm
+yasm
 zeromq
