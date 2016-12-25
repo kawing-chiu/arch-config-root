@@ -5,5 +5,6 @@
   <interface name="virbr0"/>
   <service name="samba"/>
   <service name="dhcpv6-client"/>
-  <port port="5000-5555" protocol="tcp"/>
+  <port protocol="tcp" port="5000-5555"/>
+  <port protocol="tcp" port="24800"/>
 </zone>
