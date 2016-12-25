@@ -36,9 +36,15 @@
 !/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
 
+!/etc/modprobe.d/
+!/etc/modprobe.d/vfio.conf
+
 !/etc/ssh/
 !/etc/ssh/sshd_config
 !/etc/ssh/ssh_config
+
+!/etc/libvirt/
+!/etc/libvirt/qemu.conf
 
 !/etc/unbound/
 !/etc/unbound/unbound.conf
