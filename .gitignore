@@ -75,7 +75,7 @@
 
 !/etc/firewalld/
 !/etc/firewalld/zones/
-!/etc/firewalld/zones/internal.xml
+!/etc/firewalld/zones/*.xml
 
 !/etc/security/
 !/etc/security/limits.conf
