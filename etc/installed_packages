@@ -2,7 +2,6 @@ acetoneiso2
 ack
 alsa-firmware
 alsa-utils
-anki
 arch-install-scripts
 assimp
 atril
@@ -16,8 +15,10 @@ bash-completion
 bind-tools
 binutils
 bison
+blueman
 bluez
 bluez-firmware
+bluez-utils
 boost
 bridge-utils
 bullet
@@ -29,6 +30,7 @@ caja-open-terminal
 caja-sendto
 caja-share
 calibre
+cargo
 chromium
 chrpath
 cinnamon
@@ -70,6 +72,7 @@ filesystem
 findutils
 firefox
 firewalld
+flake8
 flex
 freetds
 galculator-gtk2
@@ -99,6 +102,7 @@ gtk2
 gvfs-mtp
 gzip
 hardinfo
+hexchat
 hostapd
 htop
 i3-wm
@@ -183,6 +187,7 @@ mtools
 musescore
 nano
 nanomsg
+nasm
 neon
 net-tools
 netctl
@@ -203,7 +208,6 @@ opencv
 openmpi
 openssh
 openvpn
-ovmf
 p7zip
 pacman
 patch
@@ -216,7 +220,6 @@ phoronix-test-suite
 pkg-config
 pkgfile
 pluma
-pm-utils
 polipo
 postgresql
 procps-ng
@@ -224,6 +227,7 @@ protobuf
 psmisc
 pulseaudio
 pulseaudio-alsa
+pulseaudio-bluetooth
 pypy
 python
 python-kivy
@@ -231,7 +235,9 @@ python-pexpect
 python-pip
 python-psutil
 python-psycopg2
+python-pylint
 python-pyqt4
+python-pyqt5
 python-pyside
 python-sqlalchemy
 python-systemd
@@ -247,11 +253,13 @@ qt5-examples
 qtcreator
 r
 ranger
+rdesktop
 redis
 reiserfsprogs
 rethinkdb
 rsync
 rust
+rust-racer
 s-nail
 scala
 scons
@@ -267,6 +275,7 @@ steam
 strace
 subversion
 sudo
+swig
 synergy
 sysfsutils
 syslinux
@@ -304,7 +313,6 @@ wqy-microhei
 wqy-microhei-lite
 wqy-zenhei
 xf86-input-evdev
-xf86-input-joystick
 xf86-input-keyboard
 xf86-input-libinput
 xf86-input-mouse
@@ -312,24 +320,12 @@ xf86-input-synaptics
 xf86-input-vmmouse
 xf86-input-void
 xf86-video-amdgpu
-xf86-video-ark
 xf86-video-ati
 xf86-video-dummy
 xf86-video-fbdev
-xf86-video-glint
-xf86-video-i128
 xf86-video-intel
-xf86-video-mach64
-xf86-video-neomagic
 xf86-video-nouveau
-xf86-video-nv
 xf86-video-openchrome
-xf86-video-r128
-xf86-video-savage
-xf86-video-siliconmotion
-xf86-video-sis
-xf86-video-tdfx
-xf86-video-trident
 xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
