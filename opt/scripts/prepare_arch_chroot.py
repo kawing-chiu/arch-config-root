@@ -19,7 +19,7 @@ from subprocess import Popen
 import shutil
 
 from _utils import *
-from bootstrap_new_arch_system import ADMIN_USER_NAME
+from bootstrap_new_arch_system import DEFAULT_ADMIN_USER
 
 
 ROOT_FILE_LIST = [
@@ -46,9 +46,11 @@ def pacstrap(target_dir):
     # TODO: consider installing more packages here so that we can save the time
     # downloading the packages inside the chroot
     pkgs = ['base', 'base-devel', 'vim', 'git', 'openssh', 'python',
-            'bash-completion', 'xorg', 'clang', 'vlc', 'firefox', 'chromium']
+            'bash-completion', 'xorg', 'clang', 'vlc', 'firefox', 'chromium',
+            'archlinux-keyring']
     # '-c' means to use the package cache on the host
-    run(['pacstrap', '-c', target_dir, *pkgs])
+    #run(['pacstrap', '-c', target_dir, *pkgs])
+    run(['pacstrap', '-G', target_dir, *pkgs])
 
 def _copy_to_dir(target_dir, file_):
     file_ = os.path.abspath(os.path.expanduser(file_))
@@ -76,7 +78,7 @@ def copy_root_files(target_dir, file_list):
 def copy_user_files(target_dir, file_list):
     print("Copying user files...")
     for file_ in file_list:
-        call_f_as_user(ADMIN_USER_NAME, _copy_to_dir, (target_dir, file_))
+        call_f_as_user(DEFAULT_ADMIN_USER, _copy_to_dir, (target_dir, file_))
 
 def gen_fstab(target_dir):
     print("Generating fstab...")

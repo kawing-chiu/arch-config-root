@@ -74,9 +74,9 @@ def run_as_user(user_name, cmd, cwd=None, **kwargs):
     def _preexec():
         _change_user(uid, gid)
 
-    subprocess.call(cmd, cwd=cwd, env=env,
+    subprocess.check_call(cmd, cwd=cwd, env=env,
         preexec_fn=_preexec, **kwargs)
 
 def run(*args, **kwargs):
-    subprocess.call(*args, **kwargs)
+    subprocess.check_call(*args, **kwargs)
 

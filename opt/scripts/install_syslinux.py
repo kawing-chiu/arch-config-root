@@ -17,8 +17,8 @@ from _utils import *
 # target path inside EFI partition
 USB_MODE_PATH = 'EFI/BOOT/'
 
-BIOS_PATH = 'syslinux_bios/'
-ARCH_PATH = 'arch/'
+BIOS_PATH = 'bios_boot/'
+ARCH_PATH = 'arch_linux/'
 
 
 def _get_partition_by_path(path):
