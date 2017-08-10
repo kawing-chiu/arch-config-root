@@ -2,6 +2,7 @@ acetoneiso2
 ack
 alsa-firmware
 alsa-utils
+anki
 arch-install-scripts
 assimp
 atril
@@ -30,7 +31,6 @@ caja-open-terminal
 caja-sendto
 caja-share
 calibre
-cargo
 chromium
 chrpath
 cinnamon
@@ -55,6 +55,7 @@ dropbear
 e2fsprogs
 ebtables
 efibootmgr
+elinks
 encfs
 engrampa
 eom
@@ -114,6 +115,7 @@ ibus-qt
 ifenslave
 ifplugd
 inetutils
+iotop
 iproute2
 iputils
 ipython
@@ -214,6 +216,7 @@ patch
 pax-utils
 pciutils
 pcmciautils
+pepper-flash
 perl
 phantomjs
 phoronix-test-suite
@@ -286,7 +289,6 @@ terminator
 terminus-font
 testdisk
 texinfo
-tigervnc
 tk
 traceroute
 transmission-gtk
@@ -330,7 +332,6 @@ xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
 xfsprogs
-xmind
 xorg-docs
 xorg-fonts-100dpi
 xorg-fonts-75dpi
