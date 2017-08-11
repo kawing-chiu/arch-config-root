@@ -1,0 +1,1 @@
+#ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlp1s0", ENV{SYSTEMD_WANTS}+="wpa_supplicant@wlp1s0.service"

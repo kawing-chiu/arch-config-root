@@ -44,6 +44,10 @@
 !/etc/ssh/sshd_config
 !/etc/ssh/ssh_config
 
+!/etc/udev/
+!/etc/udev/rules.d/
+!/etc/udev/rules.d/*
+
 !/etc/libvirt/
 !/etc/libvirt/qemu.conf
 
