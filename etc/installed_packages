@@ -52,6 +52,7 @@ dnsmasq
 dos2unix
 dosfstools
 dropbear
+dstat
 e2fsprogs
 ebtables
 efibootmgr
@@ -243,6 +244,7 @@ python-pylint
 python-pyqt4
 python-pyqt5
 python-pyside
+python-pyudev
 python-sqlalchemy
 python-systemd
 python-virtualenv
