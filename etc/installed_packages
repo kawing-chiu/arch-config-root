@@ -273,6 +273,7 @@ screen
 sdl2
 sed
 shadow
+smem
 sqlcipher
 sqlite
 sqlite-analyzer
