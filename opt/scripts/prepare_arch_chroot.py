@@ -21,6 +21,13 @@ import shutil
 from _utils import *
 from bootstrap_new_arch_system import DEFAULT_ADMIN_USER
 
+# TODO:
+# 1. 将所有script整理成一个package(如何调用比较方便？)
+# 2. 安装可以分开三个stage: stage1, stage2(in chroot), stage3
+# 3. 输出所有执行的命令
+# 4. 在各个步骤之前提示确认
+# 5. log到文件(包括subprocess的输出)
+
 
 ROOT_FILE_LIST = [
     '~/.gitconfig',
