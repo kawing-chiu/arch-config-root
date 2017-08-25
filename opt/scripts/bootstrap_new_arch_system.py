@@ -51,6 +51,8 @@ ADMIN_SYSTEM_GROUPS = ['wheel', 'raise_nofile_limit']
 
 def install_packages():
     print("Installing packages...")
+    run(['pacman-key', '--init'])
+    run(['pacman-key', '--populate', 'archlinux'])
     with open(PACKAGES_LIST_FILE, 'rb') as f:
         packages = f.read()
     p = Popen(['pacman', '-Syu', '--needed', '-'], stdin=PIPE)
@@ -64,11 +66,12 @@ def set_host_name():
 
 def set_time_zone():
     print("Setting time zone...")
-    os.symlink('/usr/share/zoneinfo/Asia/Shanghai', '/etc/localtime')
+    run(['ln', '-sf', '/usr/share/zoneinfo/Asia/Shanghai', '/etc/localtime'])
 
 def set_local_time():
     print("Setting local time...")
-    run(['timedatectl', 'set-local-rtc', '1'])
+    #run(['timedatectl', 'set-local-rtc', '1'])
+    run(['hwclock', '--localtime', '--systohc'])
     print("\tcontent of /etc/adjtime:")
     with open('/etc/adjtime', 'r') as f:
         for line in f:
