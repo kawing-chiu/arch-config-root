@@ -31,6 +31,7 @@ from bootstrap_new_arch_system import DEFAULT_ADMIN_USER
 
 ROOT_FILE_LIST = [
     '~/.gitconfig',
+    '~/.bash_history',
     '~/.vps-proxy',
     '~/.mykeyfile',
     '~/.ssh/id_rsa',
@@ -40,6 +41,9 @@ ROOT_FILE_LIST = [
 ]
 
 USER_FILE_LIST = [
+    '~/.gitconfig',
+    '~/.bash_history',
+    '~/.ipython/profile_default/history.sqlite',
     '~/.mozilla',
     '~/.config/chromium',
 ]
