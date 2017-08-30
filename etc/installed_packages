@@ -460,6 +460,7 @@ sddm-kcm
 sed
 shadow
 signon-kwallet-extension
+smartmontools
 smem
 spectacle
 sqlcipher
