@@ -69,6 +69,7 @@ dmenu
 dmidecode
 dnscrypt-proxy
 dnsmasq
+docker
 dolphin
 dolphin-plugins
 dos2unix
@@ -371,6 +372,7 @@ ntfs-3g
 ntp
 nuitka
 nvidia
+nvidia-settings
 ocl-icd
 okteta
 okular
