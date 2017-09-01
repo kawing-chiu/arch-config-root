@@ -25,7 +25,7 @@ esac
 
 ##############
 
-HISTSIZE=100000
+HISTSIZE=1000000
 
 alias vim='vim -p'
 alias vi='vim -p'
