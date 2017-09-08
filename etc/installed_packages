@@ -70,6 +70,8 @@ dmidecode
 dnscrypt-proxy
 dnsmasq
 docker
+docker-compose
+docker-machine
 dolphin
 dolphin-plugins
 dos2unix
@@ -424,6 +426,7 @@ pypy
 pypy3
 python
 python-cffi
+python-docker
 python-kivy
 python-pexpect
 python-pip
