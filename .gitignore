@@ -92,6 +92,9 @@
 !/etc/netctl/interfaces/
 !/etc/netctl/interfaces/*
 
+!/etc/docker/
+!/etc/docker/daemon.json
+
 !/etc/polipo/
 !/etc/polipo/config
 
