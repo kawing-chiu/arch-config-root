@@ -1,3 +1,4 @@
+acbuild
 acetoneiso2
 ack
 akonadi-calendar-tools
@@ -453,8 +454,10 @@ rdesktop
 redis
 reiserfsprogs
 rethinkdb
+rkt
 rocs
 rsync
+runc
 rust
 rust-racer
 s-nail
