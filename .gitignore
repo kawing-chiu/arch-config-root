@@ -109,6 +109,7 @@
 !/opt/scripts/reset_network.py
 !/opt/scripts/start_vps_proxy.py
 !/opt/scripts/init_postgres_db.py
+!/opt/scripts/init_postgres_db.sh
 !/opt/scripts/prepare_arch_chroot.py
 
 !/root/

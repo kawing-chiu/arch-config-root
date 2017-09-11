@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Initialize a new postgres database."""
+# XXX: This script is deprecated.
 import os
 import sys
 
