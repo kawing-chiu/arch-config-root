@@ -293,6 +293,7 @@ less
 lib32-alsa-plugins
 lib32-curl
 lib32-nvidia-utils
+lib32-vulkan-radeon
 libevent
 libimobiledevice
 libkscreen
@@ -524,6 +525,7 @@ vi
 vim
 virt-manager
 vlc
+vulkan-radeon
 wget
 which
 wpa_actiond
