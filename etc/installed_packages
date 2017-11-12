@@ -106,6 +106,7 @@ firefox
 firewalld
 flake8
 flashplugin
+flatpak
 flex
 freetds
 galculator-gtk2
@@ -293,6 +294,7 @@ less
 lib32-alsa-plugins
 lib32-curl
 lib32-nvidia-utils
+lib32-vulkan-intel
 lib32-vulkan-radeon
 libevent
 libimobiledevice
@@ -472,11 +474,13 @@ signon-kwallet-extension
 smartmontools
 smem
 spectacle
+spirv-tools
 sqlcipher
 sqlite
 sqlite-analyzer
 sshfs
 steam
+steam-native-runtime
 step
 strace
 subversion
@@ -525,7 +529,13 @@ vi
 vim
 virt-manager
 vlc
+vulkan-extra-layers
+vulkan-headers
+vulkan-html-docs
+vulkan-intel
 vulkan-radeon
+vulkan-trace
+vulkan-validation-layers
 wget
 which
 wpa_actiond
