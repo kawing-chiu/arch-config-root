@@ -294,6 +294,8 @@ less
 lib32-alsa-plugins
 lib32-curl
 lib32-nvidia-utils
+lib32-ocl-icd
+lib32-opencl-nvidia
 lib32-vulkan-intel
 lib32-vulkan-radeon
 libevent
@@ -384,6 +386,7 @@ okteta
 okular
 opencl-headers
 opencl-mesa
+opencl-nvidia
 openconnect
 opencv
 openmpi
