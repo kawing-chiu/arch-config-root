@@ -33,9 +33,9 @@ alias less='less -R'
 
 alias sc='screen'
 
-alias pip-pypy='/opt/pypy/bin/pip'
-alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
-alias ipython-pypy='/opt/pypy/bin/ipython'
+#alias pip-pypy='/opt/pypy/bin/pip'
+#alias virtualenv-pypy='/opt/pypy/bin/virtualenv'
+#alias ipython-pypy='/opt/pypy/bin/ipython'
 
 # ss/netstat
 # listening, numeric, tcp, udp, processes
