@@ -57,6 +57,7 @@ chromium
 chrpath
 cinnamon
 clang
+cloc
 cmake
 coreutils
 cpupower
@@ -456,6 +457,8 @@ python2-pip
 python2-pygeoip
 python2-virtualenv
 qemu
+qjackctl
+qsynth
 qt4
 qt5-examples
 qtcreator
@@ -480,6 +483,7 @@ shadow
 signon-kwallet-extension
 smartmontools
 smem
+soundfont-fluid
 spectacle
 spirv-tools
 sqlcipher
@@ -494,6 +498,7 @@ subversion
 sudo
 swig
 synergy
+sysdig
 sysfsutils
 syslinux
 systemd-sysvcompat
