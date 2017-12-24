@@ -28,7 +28,6 @@ bind-tools
 binutils
 bison
 blinken
-blogilo
 bluedevil
 blueman
 bluez
@@ -162,6 +161,7 @@ ipython2
 iw
 jdk8-openjdk
 jfsutils
+juk
 k3b
 kaccounts-integration
 kaccounts-providers
@@ -194,29 +194,14 @@ kde-dev-utils
 kde-gtk-config
 kdebugsettings
 kdecoration
-kdegames-kolf
-kdegames-ksirk
-kdegames-palapeli
 kdegraphics-mobipocket
 kdegraphics-thumbnailers
-kdemultimedia-juk
-kdemultimedia-kmix
-kdemultimedia-kscd
 kdenetwork-filesharing
-kdenetwork-kget
-kdenetwork-kopete
-kdenetwork-kppp
-kdenetwork-zeroconf-ioslave
 kdenlive
 kdepim-addons
 kdeplasma-addons
 kdesdk-kioslaves
 kdesdk-thumbnailers
-kdeutils-kremotecontrol
-kdeutils-sweeper
-kdewebdev-kfilereplace
-kdewebdev-kimagemapeditor
-kdewebdev-klinkstatus
 kdf
 kdialog
 kdiamond
@@ -226,6 +211,7 @@ kfloppy
 kfourinline
 kgamma5
 kgeography
+kget
 kgoldrunner
 kgpg
 khangman
@@ -234,6 +220,7 @@ khotkeys
 kig
 kigo
 killbots
+kimagemapeditor
 kinfocenter
 kio-extras
 kiriki
@@ -248,11 +235,13 @@ kmail
 kmail-account-wizard
 kmenuedit
 kmines
+kmix
 kmplot
 knavalbattle
 knetattach
 knetwalk
 knotes
+kolf
 kollision
 kolourpaint
 kompare
@@ -260,6 +249,7 @@ konqueror
 konquest
 konsole
 kontact
+kopete
 korganizer
 kpatience
 krdc
@@ -270,6 +260,7 @@ kruler
 kscreen
 kscreenlocker
 kshisen
+ksirk
 ksnakeduel
 kspaceduel
 ksquares
@@ -299,6 +290,7 @@ lib32-curl
 lib32-nvidia-utils
 lib32-ocl-icd
 lib32-opencl-nvidia
+lib32-simplescreenrecorder
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
 lib32-vulkan-radeon
@@ -399,6 +391,7 @@ openvpn
 oxygen
 p7zip
 pacman
+palapeli
 parley
 patch
 pax-utils
@@ -481,6 +474,7 @@ sddm-kcm
 sed
 shadow
 signon-kwallet-extension
+simplescreenrecorder
 smartmontools
 smem
 soundfont-fluid
@@ -496,6 +490,7 @@ step
 strace
 subversion
 sudo
+sweeper
 swig
 synergy
 sysdig
@@ -628,4 +623,5 @@ xorg-xwininfo
 xorg-xwud
 xterm
 yasm
+zeroconf-ioslave
 zeromq
