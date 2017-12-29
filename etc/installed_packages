@@ -51,6 +51,7 @@ caja-wallpaper
 caja-xattr-tags
 calibre
 cantor
+capnproto
 cervisia
 chromium
 chrpath
@@ -343,6 +344,7 @@ mate-themes
 mate-user-guide
 mate-user-share
 mate-utils
+mayavi
 mbox-importer
 mdadm
 mediainfo
@@ -537,6 +539,7 @@ vi
 vim
 virt-manager
 vlc
+vtk
 vulkan-extra-layers
 vulkan-headers
 vulkan-html-docs
