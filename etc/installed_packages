@@ -141,6 +141,7 @@ gvfs-mtp
 gwenview
 gzip
 hardinfo
+hdf5
 hdparm
 hexchat
 hostapd
@@ -344,7 +345,6 @@ mate-themes
 mate-user-guide
 mate-user-share
 mate-utils
-mayavi
 mbox-importer
 mdadm
 mediainfo
@@ -539,7 +539,6 @@ vi
 vim
 virt-manager
 vlc
-vtk
 vulkan-extra-layers
 vulkan-headers
 vulkan-html-docs
