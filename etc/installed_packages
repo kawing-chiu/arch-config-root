@@ -24,7 +24,6 @@ autossh
 awesome
 bash
 bash-completion
-beignet
 bind-tools
 binutils
 bison
@@ -64,6 +63,7 @@ cmake
 coreutils
 cpupower
 cryptsetup
+cuda
 dconf-editor
 ddrescue
 device-mapper
@@ -355,11 +355,6 @@ mercurial
 mesa
 mesa-demos
 milou
-mingw-w64-binutils
-mingw-w64-crt
-mingw-w64-gcc
-mingw-w64-headers
-mingw-w64-winpthreads
 minuet
 mozo
 mtools
@@ -404,7 +399,6 @@ pcmciautils
 pepper-flash
 perl
 phantomjs
-phoronix-test-suite
 picmi
 pim-data-exporter
 pim-sieve-editor
