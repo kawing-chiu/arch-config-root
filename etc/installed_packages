@@ -387,6 +387,7 @@ opencv
 openmpi
 openssh
 openvpn
+ovmf
 oxygen
 p7zip
 pacman
@@ -543,6 +544,9 @@ vulkan-trace
 vulkan-validation-layers
 wget
 which
+wine
+wine-mono
+wine_gecko
 wpa_actiond
 wpa_supplicant
 wqy-bitmapfont
