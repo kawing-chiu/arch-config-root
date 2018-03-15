@@ -12,6 +12,7 @@ arch-install-scripts
 archlinux-keyring
 aria2
 ark
+arm
 artikulate
 assimp
 atom
@@ -454,6 +455,7 @@ qt4
 qt5-examples
 qtcreator
 r
+rawtherapee
 rdesktop
 redis
 reiserfsprogs
@@ -515,6 +517,7 @@ terminus-font
 testdisk
 texinfo
 tk
+tor
 traceroute
 transmission-gtk
 tree
