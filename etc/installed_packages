@@ -70,6 +70,7 @@ ddrescue
 device-mapper
 dhcpcd
 diffutils
+digikam
 discover
 djvulibre
 dmenu
@@ -114,6 +115,12 @@ flake8
 flashplugin
 flatpak
 flex
+foomatic-db
+foomatic-db-engine
+foomatic-db-gutenprint-ppds
+foomatic-db-nonfree
+foomatic-db-nonfree-ppds
+foomatic-db-ppds
 freetds
 galculator-gtk2
 gawk
@@ -140,6 +147,7 @@ groff
 grub
 gsl
 gst-plugins-good
+gutenprint
 gvfs-mtp
 gwenview
 gzip
@@ -355,6 +363,7 @@ memcached
 mercurial
 mesa
 mesa-demos
+meson
 milou
 minuet
 mozo
