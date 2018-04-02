@@ -148,9 +148,11 @@ grub
 gsl
 gst-plugins-good
 gutenprint
+gvfs-afc
 gvfs-mtp
 gwenview
 gzip
+handbrake
 hardinfo
 hdf5
 hdparm
@@ -546,6 +548,7 @@ valgrind
 vi
 vim
 virt-manager
+virtualbox
 vlc
 vulkan-extra-layers
 vulkan-headers
