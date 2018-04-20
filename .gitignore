@@ -32,7 +32,6 @@
 !/etc/odbcinst.ini
 !/etc/nsswitch.conf
 !/etc/ntp.conf
-!/etc/dnscrypt-proxy.conf
 
 !/etc/mkinitcpio.d/
 !/etc/mkinitcpio.d/linux.preset
