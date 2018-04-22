@@ -44,7 +44,6 @@ bridge-utils
 bullet
 bzip2
 caja
-caja-gksu
 caja-image-converter
 caja-open-terminal
 caja-sendto
@@ -484,6 +483,7 @@ screen
 sddm-kcm
 sed
 shadow
+shadowsocks
 signon-kwallet-extension
 simplescreenrecorder
 smartmontools
@@ -503,6 +503,8 @@ subversion
 sudo
 sweeper
 swig
+syncthing
+syncthing-gtk
 synergy
 sysdig
 sysfsutils
