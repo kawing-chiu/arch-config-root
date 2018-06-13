@@ -64,6 +64,7 @@ coreutils
 cpupower
 cryptsetup
 cuda
+davfs2
 dconf-editor
 ddrescue
 device-mapper
@@ -127,7 +128,6 @@ gcc
 gcc-fortran
 gcc-libs
 gdb
-gegl02
 gemrb
 geoclue2
 gettext
@@ -168,6 +168,7 @@ ifenslave
 ifplugd
 inetutils
 iotop
+iperf3
 iproute2
 iputils
 ipython
@@ -369,6 +370,7 @@ milou
 minuet
 mozo
 mtools
+mtr
 musescore
 nano
 nanomsg
@@ -413,7 +415,7 @@ perl
 picmi
 pim-data-exporter
 pim-sieve-editor
-pkg-config
+pkgconf
 pkgfile
 plasma-desktop
 plasma-integration
@@ -458,6 +460,7 @@ python-wheel
 python2-pip
 python2-pygeoip
 python2-virtualenv
+qbittorrent
 qemu
 qjackctl
 qsynth
@@ -529,14 +532,16 @@ terminator
 terminus-font
 testdisk
 texinfo
+texlive-core
+tinc
 tk
 tor
 traceroute
+transmission-cli
 transmission-gtk
 tree
 ttf-freefont
 ttf-liberation
-ttf-symbola
 twine
 uget
 umbrello
@@ -564,6 +569,7 @@ which
 wine
 wine-mono
 wine_gecko
+wireshark-qt
 wpa_actiond
 wpa_supplicant
 wqy-bitmapfont
@@ -643,3 +649,4 @@ xterm
 yasm
 zeroconf-ioslave
 zeromq
+zerotier-one

@@ -105,7 +105,7 @@ root ALL = (ALL) ALL
                 /opt/scripts/reset_network.py,\
                 /usr/bin/systemctl restart vps-proxy.service,\
                 /usr/bin/iotop, /usr/bin/slabtop,\
-                /usr/bin/docker
+                /usr/bin/docker, /usr/bin/ip
 
 
 
