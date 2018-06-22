@@ -68,7 +68,9 @@ davfs2
 dconf-editor
 ddrescue
 device-mapper
+dhclient
 dhcpcd
+dhcping
 diffutils
 digikam
 discover
@@ -290,7 +292,6 @@ ktouch
 ktuberling
 kturtle
 kubrick
-kuiserver
 kwallet-pam
 kwalletmanager
 kwave
@@ -449,6 +450,7 @@ python-pip
 python-psutil
 python-psycopg2
 python-pylint
+python-pyodbc
 python-pyqt4
 python-pyqt5
 python-pyside
@@ -491,6 +493,7 @@ signon-kwallet-extension
 simplescreenrecorder
 smartmontools
 smem
+smokeping
 soundfont-fluid
 spectacle
 spirv-tools
