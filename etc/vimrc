@@ -16,10 +16,8 @@ runtime! archlinux.vim
 
 " highlight search, ignorecase, smartcase, incremental search
 set hls ic scs is
-" expand tab
-set et
-" soft tabstop, shiftwidth
-set sts=-1 sw=4
+" expand tab, soft tabstop, shiftwidth
+set et sts=4 sw=4 ts=4
 
 set grepprg=ack\ --smart-case
 

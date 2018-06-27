@@ -106,6 +106,7 @@ root ALL = (ALL) ALL
                 /usr/bin/systemctl restart vps-proxy.service,\
                 /usr/bin/iotop, /usr/bin/slabtop,\
                 /usr/bin/docker, /usr/bin/ip,\
+                /usr/bin/dhclient,\
                 /usr/bin/zerotier-cli
 
 

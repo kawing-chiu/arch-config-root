@@ -98,6 +98,7 @@ encfs
 engrampa
 eom
 fakeroot
+fcgiwrap
 fcitx
 fcitx-configtool
 fcitx-gtk2
@@ -123,6 +124,7 @@ foomatic-db-gutenprint-ppds
 foomatic-db-nonfree
 foomatic-db-nonfree-ppds
 foomatic-db-ppds
+fping
 freetds
 galculator-gtk2
 gawk
@@ -381,6 +383,7 @@ net-tools
 netctl
 network-manager-applet
 networkmanager
+networkmanager-openvpn
 nginx
 nmap
 nodejs
@@ -405,12 +408,13 @@ ovmf
 oxygen
 p7zip
 pacman
+pacman-contrib
+pacmanlogviewer
 palapeli
 parley
 patch
 pax-utils
 pciutils
-pcmciautils
 pepper-flash
 perl
 picmi
@@ -505,6 +509,7 @@ steam
 steam-native-runtime
 step
 strace
+stunnel
 subversion
 sudo
 sweeper
@@ -519,6 +524,7 @@ systemd-sysvcompat
 systemsettings
 tar
 tcpdump
+tcptrace
 telepathy-kde-accounts-kcm
 telepathy-kde-approver
 telepathy-kde-auth-handler
@@ -546,6 +552,7 @@ tree
 ttf-freefont
 ttf-liberation
 twine
+udiskie
 uget
 umbrello
 unace
