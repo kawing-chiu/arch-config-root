@@ -38,7 +38,7 @@
 
 # Uncomment this if you want to use a parent SOCKS proxy:
 
-socksParentProxy = "localhost:8088"
+socksParentProxy = "localhost:8288"
 socksProxyType = socks5
 
 # Uncomment this if you want to scrub private information from the log:
