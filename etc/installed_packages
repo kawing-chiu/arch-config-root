@@ -64,6 +64,7 @@ coreutils
 cpupower
 cryptsetup
 cuda
+cython
 davfs2
 dconf-editor
 ddrescue
@@ -125,7 +126,9 @@ foomatic-db-nonfree
 foomatic-db-nonfree-ppds
 foomatic-db-ppds
 fping
+freerdp
 freetds
+frei0r-plugins
 galculator-gtk2
 gawk
 gcc
@@ -418,6 +421,7 @@ pax-utils
 pciutils
 pepper-flash
 perl
+perl-image-exiftool
 picmi
 pim-data-exporter
 pim-sieve-editor
@@ -450,15 +454,14 @@ python
 python-cffi
 python-docker
 python-kivy
+python-pandas
 python-pexpect
 python-pip
 python-psutil
 python-psycopg2
 python-pylint
 python-pyodbc
-python-pyqt4
 python-pyqt5
-python-pyside
 python-pyudev
 python-sqlalchemy
 python-systemd
@@ -479,6 +482,7 @@ rawtherapee
 rdesktop
 redis
 reiserfsprogs
+remmina
 rethinkdb
 rkt
 rocs
