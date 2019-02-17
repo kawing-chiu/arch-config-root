@@ -2,4 +2,5 @@
 <zone>
   <service name="synergy"/>
   <service name="samba"/>
+  <port port="5000-5555" protocol="tcp"/>
 </zone>

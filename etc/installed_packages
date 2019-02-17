@@ -1,4 +1,3 @@
-acbuild
 acetoneiso2
 ack
 akonadi-calendar-tools
@@ -41,6 +40,7 @@ breeze
 breeze-gtk
 bridge-utils
 bullet
+busybox
 bzip2
 caja
 caja-image-converter
@@ -136,7 +136,7 @@ gcc-fortran
 gcc-libs
 gdb
 gemrb
-geoclue2
+geoclue
 gettext
 gimp
 git
@@ -386,6 +386,7 @@ nasm
 neon
 net-tools
 netctl
+nethogs
 network-manager-applet
 networkmanager
 networkmanager-openvpn
