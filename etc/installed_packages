@@ -62,6 +62,7 @@ cmake
 coreutils
 cpupower
 cryptsetup
+ctags
 cuda
 cython
 darktable
