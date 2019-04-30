@@ -31,7 +31,7 @@ blinken
 bluedevil
 blueman
 bluez
-bluez-firmware
+bluez-plugins
 bluez-utils
 bomber
 boost
@@ -378,6 +378,7 @@ mesa-demos
 meson
 milou
 minuet
+mono
 mozo
 mtools
 mtr
@@ -386,6 +387,7 @@ nano
 nanomsg
 nasm
 neon
+neovim
 net-tools
 netctl
 nethogs
@@ -460,6 +462,7 @@ python
 python-cffi
 python-docker
 python-kivy
+python-neovim
 python-pandas
 python-pexpect
 python-pip
@@ -475,7 +478,6 @@ python-systemd
 python-virtualenv
 python-wheel
 python2-pip
-python2-pygeoip
 python2-virtualenv
 qbittorrent
 qemu
@@ -591,7 +593,6 @@ wine
 wine-mono
 wine_gecko
 wireshark-qt
-wpa_actiond
 wpa_supplicant
 wqy-bitmapfont
 wqy-microhei
