@@ -39,6 +39,7 @@ bovo
 breeze
 breeze-gtk
 bridge-utils
+brook
 bullet
 busybox
 bzip2
@@ -106,7 +107,6 @@ fcitx
 fcitx-configtool
 fcitx-gtk2
 fcitx-gtk3
-fcitx-qt4
 fcitx-qt5
 fcitx-sunpinyin
 ffmpegthumbnailer
@@ -128,6 +128,7 @@ foomatic-db-nonfree
 foomatic-db-nonfree-ppds
 foomatic-db-ppds
 fping
+freemind
 freerdp
 freetds
 frei0r-plugins
@@ -143,6 +144,7 @@ gettext
 gimp
 git
 glibc
+gnu-free-fonts
 go
 goldendict
 gparted
@@ -173,7 +175,6 @@ i3lock
 i3status
 ibus
 ibus-pinyin
-ibus-qt
 ifenslave
 ifplugd
 inetutils
@@ -330,6 +331,7 @@ libvirt
 licenses
 linux
 linux-headers
+lldb
 llvm
 lmdb
 logrotate
@@ -462,13 +464,13 @@ python
 python-cffi
 python-docker
 python-kivy
-python-neovim
 python-pandas
 python-pexpect
 python-pip
 python-psutil
 python-psycopg2
 python-pylint
+python-pynvim
 python-pyodbc
 python-pyqt5
 python-pytest
@@ -483,7 +485,6 @@ qbittorrent
 qemu
 qjackctl
 qsynth
-qt4
 qt5-examples
 qtcreator
 r
@@ -506,6 +507,8 @@ sddm-kcm
 sed
 shadow
 shadowsocks
+shadowsocks-libev
+shadowsocks-v2ray-plugin
 signon-kwallet-extension
 simplescreenrecorder
 smartmontools
@@ -562,8 +565,8 @@ traceroute
 transmission-cli
 transmission-gtk
 tree
-ttf-freefont
 ttf-liberation
+tumbler
 twine
 udiskie
 uget
@@ -574,6 +577,7 @@ unrar
 usbutils
 user-manager
 util-linux
+v2ray
 valgrind
 vi
 vim
