@@ -494,7 +494,6 @@ rdesktop
 redis
 reiserfsprogs
 remmina
-rkt
 rocs
 rsync
 rust
@@ -558,6 +557,7 @@ terminus-font
 testdisk
 texinfo
 texlive-core
+tigervnc
 tinc
 tk
 tor
@@ -602,6 +602,7 @@ wqy-bitmapfont
 wqy-microhei
 wqy-microhei-lite
 wqy-zenhei
+x11vnc
 xdg-desktop-portal-kde
 xf86-input-evdev
 xf86-input-keyboard
