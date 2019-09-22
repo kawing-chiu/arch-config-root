@@ -557,7 +557,6 @@ terminus-font
 testdisk
 texinfo
 texlive-core
-tigervnc
 tinc
 tk
 tor
@@ -603,6 +602,8 @@ wqy-microhei
 wqy-microhei-lite
 wqy-zenhei
 x11vnc
+x2goclient
+x2goserver
 xdg-desktop-portal-kde
 xf86-input-evdev
 xf86-input-keyboard
@@ -617,10 +618,12 @@ xf86-video-fbdev
 xf86-video-intel
 xf86-video-nouveau
 xf86-video-openchrome
+xf86-video-qxl
 xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
 xfsprogs
+xinetd
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
