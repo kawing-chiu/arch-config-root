@@ -14,6 +14,7 @@
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
+ListenAddress 127.0.0.1
 
 # The default requires explicit activation of protocol 1
 #Protocol 2
