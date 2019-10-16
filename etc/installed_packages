@@ -7,6 +7,7 @@ akregator
 alsa-firmware
 alsa-utils
 anki
+ansible
 arch-install-scripts
 archlinux-keyring
 aria2
@@ -454,6 +455,7 @@ poxml
 print-manager
 procps-ng
 protobuf
+proxychains-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
@@ -464,6 +466,7 @@ python
 python-cffi
 python-docker
 python-kivy
+python-language-server
 python-pandas
 python-pexpect
 python-pip
@@ -676,6 +679,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xterm
+yapf
 yasm
 zeroconf-ioslave
 zeromq
