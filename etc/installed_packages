@@ -22,6 +22,7 @@ autoconf
 automake
 autossh
 awesome
+base
 bash
 bash-completion
 bind-tools
@@ -90,6 +91,8 @@ dolphin
 dolphin-plugins
 dos2unix
 dosfstools
+dotnet-runtime
+dotnet-sdk
 dragon
 drkonqi
 dropbear
@@ -133,6 +136,7 @@ freemind
 freerdp
 freetds
 frei0r-plugins
+fzf
 galculator-gtk2
 gawk
 gcc
@@ -195,6 +199,7 @@ kaccounts-providers
 kactivitymanagerd
 kaddressbook
 kajongg
+kakoune
 kalarm
 kalgebra
 kalzium
@@ -383,6 +388,7 @@ milou
 minuet
 mono
 mozo
+mpv
 mtools
 mtr
 musescore
@@ -399,6 +405,7 @@ networkmanager
 networkmanager-openvpn
 nginx
 nmap
+nnn
 nodejs
 npm
 ntfs-3g
@@ -451,6 +458,7 @@ polipo
 polkit-kde-agent
 postgresql
 powerdevil
+powertop
 poxml
 print-manager
 procps-ng
@@ -460,6 +468,7 @@ psmisc
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pyenv
 pypy
 pypy3
 python
@@ -513,6 +522,7 @@ shadowsocks-libev
 shadowsocks-v2ray-plugin
 signon-kwallet-extension
 simplescreenrecorder
+skim
 smartmontools
 smem
 smokeping
@@ -571,6 +581,7 @@ tree
 ttf-liberation
 tumbler
 twine
+typescript
 udiskie
 uget
 umbrello
@@ -680,6 +691,7 @@ xorg-xwininfo
 xorg-xwud
 xterm
 yapf
+yarn
 yasm
 zeroconf-ioslave
 zeromq
