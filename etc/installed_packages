@@ -458,6 +458,7 @@ polipo
 polkit-kde-agent
 postgresql
 powerdevil
+powerline-fonts
 powertop
 poxml
 print-manager
@@ -579,6 +580,8 @@ traceroute
 transmission-cli
 transmission-gtk
 tree
+ttf-fantasque-sans-mono
+ttf-fira-code
 ttf-liberation
 tumbler
 twine
