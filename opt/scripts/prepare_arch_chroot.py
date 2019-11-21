@@ -38,6 +38,7 @@ ROOT_FILE_LIST = [
     '~/.ssh/id_rsa.pub',
     '/opt/dicts/',
     '/usr/share/fonts/Win8/',
+    '/usr/share/fonts/nerd-fonts/',
 ]
 
 USER_FILE_LIST = [
